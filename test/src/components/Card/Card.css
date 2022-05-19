@@ -1,0 +1,13 @@
+.general-container{
+    width: 90% !important;
+}
+
+.grid-custom{
+    margin-right: 7px !important;
+    margin-bottom: 15px !important;
+}
+
+.p-card-custom{
+    font-weight: bolder;
+    font-size: larger;
+}

@@ -1,4 +1,5 @@
 import './App.css';
+import ItemListContainer from './components/Card/ItemListContainer';
 import Navbar from './components/NavBar/NavBar'
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <div className="App">
       <Navbar/>
       <h1 className="title">Ecommerce</h1>
+      <ItemListContainer />
     </div>
   );
 }

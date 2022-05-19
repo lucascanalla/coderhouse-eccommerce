@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,19 +10,16 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import './NavBar.css'
+import CartWidget from '../Cart/CartWidget';
 
-const pages = ['Productos', 'Precios', 'Blog'];
+
+const pages = ['Limpieza', 'Perfumeria', 'Bazar', 'Contacto'];
 
 const NavBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
+  const handleCloseNavMenu = () => setAnchorElNav(null);
 
   return (
     <AppBar position="static">
@@ -79,6 +76,8 @@ const NavBar = () => {
               </Button>
             ))}
             </Box>
+            
+            <CartWidget />
             
             <Button variant="contained" style={{backgroundColor: '#053f78c2'}}>Login</Button>
         </Toolbar>
