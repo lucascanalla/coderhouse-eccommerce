@@ -1,27 +1,37 @@
-import React, { useEffect } from 'react';
-import CardItem from './CardItem';
+import React, { useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
 import { initialCards } from '../../data';
+import ItemList from './ItemList';
 import './Card.css';
 
 const ItemListContainer = () => {
     
+    const [itemArray, setItemArray] = useState(); 
 
     const getProducts = () => {
         return new Promise((resolve, reject) => {
-                resolve(initialCards);
+            let flag = true;
+
+            if(flag){
+                setTimeout( () => {
+                    resolve(initialCards);
+                }, 2000);
+            }else{
+                reject('Runtime Error')
+            }
         })
     }
 
     useEffect( ()=> {
         getProducts()
         .then( (res) => {
-            console.log("Response",res)
+            setItemArray(res);
         })
         .catch( (err) => {
-            console.log("Error",err)
+            console.log("Error: ",err)
         })
         .finally( () => {
+            console.log("End of ejecution")
         } )
     
     },[])
@@ -30,20 +40,16 @@ const ItemListContainer = () => {
         <>
             <Grid container>
                 { 
-                    initialCards != null ?
-                        initialCards.map(({img, title, price, id, stock}) => {
+                    itemArray != null ?
+                        itemArray.map(({img, title, price, id, stock}) => {
                             return(
                                 <>
-                                    <Grid item md={3} key={id}>
-                                        <div className='card-item-gral'>
-                                            <CardItem title={title} price={price} img={img} stock={stock} />
-                                        </div>
-                                    </Grid>                                
+                                    <ItemList title={title} price={price} img={img} stock={stock} id={id}/>
                                 </>
                             )
                         })
                     :
-                        <h5>No Hay productos</h5>
+                        <h3>Espere...</h3>
                 }
             </Grid>
         </>

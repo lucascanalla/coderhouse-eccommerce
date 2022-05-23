@@ -3,7 +3,7 @@ import { Button, Card, CardContent } from "@mui/material"
 import ItemCount from './ItemCount'
 import './Card.css'
 
-const CardItem = ({img, title, price, stock}) => {
+const Item = ({img, title, price, stock}) => {
     
     let initial = 1;
     const [count, setCount] = useState(initial)
@@ -37,4 +37,4 @@ const CardItem = ({img, title, price, stock}) => {
     )
 }
 
-export default CardItem
+export default Item
