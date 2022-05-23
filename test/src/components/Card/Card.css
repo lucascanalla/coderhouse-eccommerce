@@ -1,8 +1,5 @@
-.general-container{
-    width: 90% !important;
-}
 
-.grid-custom{
+/* .grid-custom{
     margin-right: 7px !important;
     margin-bottom: 15px !important;
 }
@@ -10,4 +7,24 @@
 .p-card-custom{
     font-weight: bolder;
     font-size: larger;
+} */
+
+.card-item-gral {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(40, 5, 109, 0.19);
 }
+
+.card-item img {
+    width: 95%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-item {display: flex;flex-direction: column;}
+
+.card-item p {font-size: 18px;font-weight: 700;margin-top: 10px;margin-bottom: 10px;}
+
+.card-item span {margin-bottom: 10px;font-size: 16px;}
+
+.card-item div button {margin: 10px 15px;} 

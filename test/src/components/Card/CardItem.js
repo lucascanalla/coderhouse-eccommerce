@@ -1,35 +1,38 @@
-import React from 'react'
-import { Grid, Typography } from "@mui/material"
-import { Button, Card, CardContent, CardActionArea, CardMedia, CardActions } from "@mui/material"
+import React, { useState } from 'react'
+import { Button, Card, CardContent } from "@mui/material"
+import ItemCount from './ItemCount'
 import './Card.css'
 
-const CardItem = ({product}) => {
+const CardItem = ({img, title, price, stock}) => {
+    
+    let initial = 1;
+    const [count, setCount] = useState(initial)
+
+    const handleAdd = (e) => {
+        if(e.target.id === 'add'){
+            setCount(count + 1)
+        }else{
+            setCount(count - 1)
+        }
+    }
 
     return(
         <>
-            <Grid item md={3} className="grid-custom">
-                <Card>
-                    <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            height="140"
-                            image={product.img}
-                            alt="product"
-                            />
-                        <CardContent>
-                            <p className='p-card-custom'>{product.title}</p>
-                            <span>${product.price}</span>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions style={{display:'block'}} >
-                        <Button size="medium" color="primary" variant="contained">
-                            <Typography variant="button" display="block" gutterBottom>
-                                Detalle
-                            </Typography>
-                        </Button>
-                    </CardActions>
-                </Card>
-            </Grid>
+            <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                    <div className='card-item'>
+                        <div>
+                            <img src={img} alt={title}/>
+                        </div>
+                        <p>{title}</p>
+                        <span>${price}</span>
+                        <div>
+                            <ItemCount count={count} stock={stock} handleAdd={handleAdd} />
+                        </div>
+                        <Button variant='contained'>Agregar al Carrito</Button>
+                    </div>
+                </CardContent>
+            </Card>
         </>
     )
 }

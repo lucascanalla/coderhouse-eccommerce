@@ -7,7 +7,9 @@ function App() {
     <div className="App">
       <Navbar/>
       <h1 className="title">Ecommerce</h1>
-      <ItemListContainer />
+      <div className='general-container'>
+        <ItemListContainer />
+      </div>
     </div>
   );
 }
