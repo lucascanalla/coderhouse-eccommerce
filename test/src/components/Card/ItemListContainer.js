@@ -41,11 +41,9 @@ const ItemListContainer = () => {
             <Grid container>
                 { 
                     itemArray != null ?
-                        itemArray.map(({img, title, price, id, stock}) => {
+                        itemArray.map(({img, title, price, id, stock, niu}, i) => {
                             return(
-                                <>
-                                    <ItemList title={title} price={price} img={img} stock={stock} id={id}/>
-                                </>
+                                <ItemList key={i} niu={niu} title={title} price={price} img={img} stock={stock} />
                             )
                         })
                     :

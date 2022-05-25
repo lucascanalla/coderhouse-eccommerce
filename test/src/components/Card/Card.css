@@ -15,10 +15,39 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(40, 5, 109, 0.19);
 }
 
-.card-item img {
+.card-item a img {
     width: 95%;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+}
+
+.icon-new {
+    color: #1976d2;
+    position: absolute;
+    font-size: 2rem !important;
+}
+
+.card-item a img:hover {
+    opacity: 0.8;
+}
+
+.modal-div {
+    display: grid; 
+    align-content: center; 
+    justify-content: center;
+}
+
+.modal-div div {
+    display: flex;
+    justify-content: space-between;
+    justify-self: auto;
+}
+
+.modal-div img {
+    max-width: 100%;
+    height: auto;
+    width: 500px;
 }
 
 .card-item {display: flex;flex-direction: column;}

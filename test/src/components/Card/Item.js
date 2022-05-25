@@ -1,38 +1,54 @@
 import React, { useState } from 'react'
-import { Button, Card, CardContent } from "@mui/material"
+import { Card, CardContent, IconButton } from "@mui/material"
+import CloseIcon from '@mui/icons-material/Close';
+import FiberNewIcon from '@mui/icons-material/FiberNew';
 import ItemCount from './ItemCount'
+import ItemModal from './ItemModal'
 import './Card.css'
 
-const Item = ({img, title, price, stock}) => {
+const Item = ({img, title, price, stock, niu}) => {
     
     let initial = 1;
-    const [count, setCount] = useState(initial)
-
-    const handleAdd = (e) => {
-        if(e.target.id === 'add'){
-            setCount(count + 1)
-        }else{
-            setCount(count - 1)
-        }
-    }
+    const [open, setOpen] = useState(false);
+   
+    const handleCloseModal = () => { setOpen(false); }
+    const handleOpenModal = () => { setOpen(true); }
 
     return(
         <>
-            <Card sx={{ minWidth: 275 }}>
-                <CardContent>
-                    <div className='card-item'>
-                        <div>
-                            <img src={img} alt={title}/>
-                        </div>
-                        <p>{title}</p>
-                        <span>${price}</span>
-                        <div>
-                            <ItemCount count={count} stock={stock} handleAdd={handleAdd} />
-                        </div>
-                        <Button variant='contained'>Agregar al Carrito</Button>
+        <Card variant="outlined" sx={{ minWidth: 275 }}>
+            <CardContent>
+                <div className='card-item'>
+                    <div>
+                        <a href='#' onClick={handleOpenModal} >
+                        { niu && (
+                            <FiberNewIcon className='icon-new'/>
+                        )}
+                            <img src={img} alt={title} />
+                        </a>
                     </div>
-                </CardContent>
-            </Card>
+                    <p>{title}</p>
+                    <span>${price}</span>
+                    <div>
+                        <ItemCount stock={stock} initial={initial} />
+                    </div>
+                </div>
+            </CardContent>
+        </Card>
+
+        {open && ( 
+            <ItemModal handleCloseModal={handleCloseModal} open={open}>
+                <div className='modal-div'>
+                    <div>
+                        <h2>Detalle</h2>
+                        <IconButton onClick={handleCloseModal}>
+                            <CloseIcon />
+                        </IconButton>
+                    </div>
+                    <img src={img} alt={img} />
+                </div>
+            </ItemModal>                                  
+        )}
         </>
     )
 }

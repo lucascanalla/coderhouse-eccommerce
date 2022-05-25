@@ -62,8 +62,10 @@ const NavBar = () => {
                 ))}
                 </Menu>
             </Box>
-
-            <img src="coderlogo.jpg" alt="logo" className='img-custom'></img>
+            
+            <a href='/'>
+              <img src="coderlogo.jpg" alt="logo" className='img-custom'></img>
+            </a>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
