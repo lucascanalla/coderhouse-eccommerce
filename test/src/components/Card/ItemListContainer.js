@@ -38,18 +38,18 @@ const ItemListContainer = () => {
 
     return (
         <>
-            <Grid container>
-                { 
-                    itemArray != null ?
-                        itemArray.map(({img, title, price, id, stock, niu}, i) => {
-                            return(
-                                <ItemList key={i} niu={niu} title={title} price={price} img={img} stock={stock} />
-                            )
-                        })
-                    :
-                        <h3>Espere...</h3>
-                }
-            </Grid>
+        <Grid container>
+            { 
+            itemArray != null ?
+                itemArray.map((items, i) => {
+                    return(
+                        <ItemList key={i} item={items} />
+                    )
+                })
+            :
+                <h3>Espere...</h3>
+            }
+        </Grid>
         </>
     );
 };

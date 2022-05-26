@@ -6,9 +6,10 @@ import ItemCount from './ItemCount'
 import ItemModal from './ItemModal'
 import './Card.css'
 
-const Item = ({img, title, price, stock, niu}) => {
+const Item = ({item}) => {
     
     let initial = 1;
+    const {img, title, price, stock, niu} = item
     const [open, setOpen] = useState(false);
    
     const handleCloseModal = () => { setOpen(false); }
@@ -21,9 +22,9 @@ const Item = ({img, title, price, stock, niu}) => {
                 <div className='card-item'>
                     <div>
                         <a href='#' onClick={handleOpenModal} >
-                        { niu && (
-                            <FiberNewIcon className='icon-new'/>
-                        )}
+                            { niu && (
+                                <FiberNewIcon className='icon-new'/>
+                            )}
                             <img src={img} alt={title} />
                         </a>
                     </div>
