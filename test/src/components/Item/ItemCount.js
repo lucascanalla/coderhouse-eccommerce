@@ -1,29 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom'
 
-const ItemCount = ({ stock, initial }) => {
+const ItemCount = ({ stock, initial, onAdd, showButton }) => {
 
-    const [count, setCount] = useState()
-    const [buttonCartLabel, setButtonCartLabel] = useState();
-    const [showButton, setShowButton] = useState(false);
-
-    useEffect( () =>{
-        if(parseInt(stock) < 1){
-            setButtonCartLabel("Sin Stock")
-            setCount(0)
-        }else{
-            setButtonCartLabel("Agregar al Carrito")
-            setCount(initial)
-        }
-    },[])
+    const [count, setCount] = useState(initial)
+    //const [buttonCartLabel, setButtonCartLabel] = useState();
+    //const [showButton, setShowButton] = useState(false);
 
     const handleRestCount = () => { setCount(count - 1) }
     const handleAddCount = () => { setCount(count + 1) }
-    const onAdd = () => { 
-        setShowButton(true);
-        console.log("Elementos a agregar al carrito: ", count) 
-    }
+    // const onAdd = () => { 
+    //     setShowButton(true);
+    //     console.log("Elementos a agregar al carrito: ", count) 
+    // }
 
     return (
         <>
@@ -33,7 +23,7 @@ const ItemCount = ({ stock, initial }) => {
                 <span style={{fontWeight:'bold'}}>{count}</span>
             <Button variant='outlined'  disabled={ stock < 1 || count === stock } onClick={handleAddCount}>+</Button>
             <Button id='buttonCart' variant='contained' disabled={ stock < 1 } onClick={onAdd}>
-                {buttonCartLabel}
+            <span style={{color: 'white', marginBottom: '0px'}}>{ stock < 1 ? 'Sin Stock' : 'Agregar al Carrito'  }</span>
             </Button>
             </>
         }

@@ -11,9 +11,15 @@ import { Link } from 'react-router-dom';
 const Item = ({item}) => {
     
     let initial = 1;
-    const {img, title, price, stock, niu, id} = item
+    const {img, title, price, stock, niu, id, category} = item
     const [open, setOpen] = useState(false);
-   
+    const [showButton, setShowButton] = useState(false);
+
+    const onAdd = () => { 
+        setShowButton(true);
+        //console.log("Elementos a agregar al carrito: ", count) 
+    }
+
     const handleCloseModal = () => { setOpen(false); }
     const handleOpenModal = () => { setOpen(true); }
 
@@ -35,13 +41,18 @@ const Item = ({item}) => {
                     <span>${price[0].price}</span>
                     <div className='card-item-button'>
                         <Button variant='outlined' >
-                            <Link to={`detail/${id}`}>
+                            <Link to={`detail/${id}`} >
                                 Ver Detalle
                             </Link>
                         </Button>
                     </div>
                     <div>
-                        <ItemCount stock={stock} initial={initial} />
+                        <ItemCount 
+                            stock={stock} 
+                            initial={initial} 
+                            showButton={showButton} 
+                            onAdd={onAdd}
+                            />
                     </div>
                 </div>
             </CardContent>

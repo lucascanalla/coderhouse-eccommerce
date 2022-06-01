@@ -38,7 +38,6 @@ const ItemListContainer = () => {
     }
 
     useEffect( ()=> {
-        console.log('categoryName', name);
         if(name){
             getProductsWithCategory(name)
             .then( (res) => {

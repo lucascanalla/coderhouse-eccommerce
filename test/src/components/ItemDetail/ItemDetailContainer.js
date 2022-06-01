@@ -46,11 +46,10 @@ const ItemDetailContainer = () => {
         })
         .finally(() => {
             console.log("Finally");
-            //setItem(res);
 
         })
     },[])
-    //ver de pasar el parametro id para
+    
     return (
         <>
         {

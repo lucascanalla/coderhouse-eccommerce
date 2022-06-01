@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Rating, Box, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
@@ -13,8 +13,12 @@ const ItemDetail = ({item}) => {
 
     const { img, title, description, category, subcategory, price, stock, niu } = item;
     const colors = ['yellow', 'orange', 'black', 'blue'];
+    const [showButton, setShowButton] = useState(false);
 
-    console.log("img", img)
+    const onAdd = () => { 
+        setShowButton(true);
+    }
+    
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#1976d214',
         ...theme.typography.body2,
@@ -54,7 +58,11 @@ const ItemDetail = ({item}) => {
         </Grid>
         <Grid item xs={4}>
             <Item>
-                <ItemBreadcrumb category={category} subcategory={subcategory} title={title}/>
+                <ItemBreadcrumb 
+                    category={category} 
+                    subcategory={subcategory} 
+                    title={title}
+                />
                 <Box sx={boxValue}>
                     <h1>{title}</h1>
                     <div className='item-star'>
@@ -65,7 +73,12 @@ const ItemDetail = ({item}) => {
                     <ItemDetailColors colors={colors} />
                 </Box>
                 <div className='detail-button'>
-                    <ItemCount stock={stock} initial={1} />
+                    <ItemCount 
+                        stock={stock} 
+                        initial={1} 
+                        onAdd={onAdd} 
+                        showButton={showButton} 
+                    />
                 </div>
             </Item>
         </Grid>

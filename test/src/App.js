@@ -32,6 +32,7 @@ function App() {
           <Route exact path='/category/:name' element={<ItemListContainer />}/>
           <Route exact path='/contact' element={<Contact />}/>
           {/* <Route exact path='/products' element={}/> */}
+          <Route exact path='/category/:name/detail/:id' element={<ItemDetailContainer /> }/>
           <Route exact path='/detail/:id' element={<ItemDetailContainer /> }/>
           <Route exact path='*' element={<Error />}/>
         </Routes>
