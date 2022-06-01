@@ -5,11 +5,13 @@ import FiberNewIcon from '@mui/icons-material/FiberNew';
 import ItemCount from './ItemCount'
 import ItemModal from './ItemModal'
 import './Card.css'
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Item = ({item}) => {
     
     let initial = 1;
-    const {img, title, price, stock, niu} = item
+    const {img, title, price, stock, niu, id} = item
     const [open, setOpen] = useState(false);
    
     const handleCloseModal = () => { setOpen(false); }
@@ -25,11 +27,19 @@ const Item = ({item}) => {
                             { niu && (
                                 <FiberNewIcon className='icon-new'/>
                             )}
-                            <img src={img} alt={title} />
+                            <img src={img[0]} alt={title} />
                         </a>
                     </div>
                     <p>{title}</p>
-                    <span>${price}</span>
+                    
+                    <span>${price[0].price}</span>
+                    <div className='card-item-button'>
+                        <Button variant='outlined' >
+                            <Link to={`detail/${id}`}>
+                                Ver Detalle
+                            </Link>
+                        </Button>
+                    </div>
                     <div>
                         <ItemCount stock={stock} initial={initial} />
                     </div>

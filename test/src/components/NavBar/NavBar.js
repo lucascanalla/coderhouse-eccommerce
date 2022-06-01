@@ -11,9 +11,32 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import './NavBar.css'
 import CartWidget from '../Cart/CartWidget';
+import { Link } from 'react-router-dom';
 
 
-const pages = ['Limpieza', 'Perfumeria', 'Bazar', 'Contacto'];
+//const pages = ['Limpieza', 'Perfumeria', 'Bazar', 'Contacto'];
+const pages = [
+                {
+                  name: 'Mesas',
+                  path: 'category/Mesa'
+                },
+                {
+                  name: 'Barras',
+                  path: 'category/Barra'
+                },
+                {
+                  name: 'Sentar',
+                  path: 'category/Sentar'
+                },
+                {
+                  name: 'Colgantes',
+                  path: 'category/Colgante'
+                },
+                {
+                  name: 'Contacto',
+                  path: 'Contact'
+                }
+              ]
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -22,10 +45,15 @@ const NavBar = () => {
   const handleCloseNavMenu = () => setAnchorElNav(null);
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-
+    // <div className='navbar-container'>
+      <AppBar position="static">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+              
+            <Link to={'/'}>
+              <img src="aliwenLogo2.png" alt="logo" className='img-custom'></img>
+            </Link>
+            
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
                 size="large"
@@ -55,36 +83,39 @@ const NavBar = () => {
                     display: { xs: 'block', md: 'none' },
                 }}
                 >
-                {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                {pages && pages.map((page, i) => (
+                    <MenuItem key={i} onClick={handleCloseNavMenu}>
+                      <Link to={`${page.path}`}>
+                        <Typography textAlign="center" >{page.name}</Typography>
+                      </Link>
                     </MenuItem>
                 ))}
                 </Menu>
             </Box>
             
-            <a href='/'>
-              <img src="coderlogo.jpg" alt="logo" className='img-custom'></img>
-            </a>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {pages.map((page, i) => (
               <Button
-                key={page}
+                key={i}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                <Link to={`${page.path}`} style={{color: 'white'}}>
+                  {page.name}
+                </Link>
               </Button>
             ))}
             </Box>
             
             <CartWidget />
-            
-            <Button variant="contained" style={{backgroundColor: '#053f78c2'}}>Login</Button>
-        </Toolbar>
-      </Container>
-    </AppBar>
+            <div className='nav-button-login'>
+              <Button variant="contained" >Login</Button>
+            </div>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    // </div>
   );
 };
 export default NavBar;

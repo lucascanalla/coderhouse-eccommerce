@@ -1,4 +1,8 @@
-
+:root{
+    --principalColor: #164749;
+    --lighterPrincipalColor: #508c8e;
+    --darkerPrincipalColor: #0f3031;
+  }
 /* .grid-custom{
     margin-right: 7px !important;
     margin-bottom: 15px !important;
@@ -17,13 +21,24 @@
 
 .card-item a img {
     width: 95%;
+    height: 95%;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
 }
 
+.card-item-button a {
+    color: var(--principalColor);
+    text-decoration: none;
+}
+
+.card-item-button a:visited {
+    color: var(--lighterPrincipalColor);
+    text-decoration: none;
+}
+
 .icon-new {
-    color: #1976d2;
+    color: var(--principalColor);
     position: absolute;
     font-size: 2rem !important;
 }
@@ -57,3 +72,7 @@
 .card-item span {margin-bottom: 10px;font-size: 16px;}
 
 .card-item div button {margin: 10px 15px;} 
+
+/* #buttonCart {
+    background-color: var(--principalColor);
+} */

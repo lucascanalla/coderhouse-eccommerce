@@ -1,11 +1,31 @@
+:root{
+  --principalColor: #164749;
+  --lighterPrincipalColor: #508c8e;
+}
+
 .App {
   text-align: center;
+  font-family: 'Work Sans', sans-serif;;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+
+h1, h2, h3, p, span, a, button {
+    font-family: 'Work Sans', sans-serif !important;
+    color: var(--principalColor) ;
+}
+
+a {
+  text-decoration-line: none;
+}
+
+button {
+  background-color: var(--principalColor) ;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -14,7 +34,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
+  background-color: var(--principalColor);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,6 +59,15 @@
 }
 
 .general-container {
-  width: 1300px;
+  width: 100%;
   margin: 0 auto;
+}
+
+.detail-container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.navbar-container {
+  width: 100%;
 }
