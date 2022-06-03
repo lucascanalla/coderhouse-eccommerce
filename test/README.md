@@ -12,7 +12,11 @@ npm run build
 
 ## Usage
 
-Una vez instalado el proyecto, con el comando antes mencionado. El proyecto esta listo para usarse.
+Una vez instalado el proyecto, con el comando antes mencionado, ejecutar comando 
+```bash
+npm start
+```
+El proyecto esta listo para usarse en http://localhost:3000
 
 ## Contribuciones
 A todo el equipo de profesores y tutores de [CoderHouse](https://coderhouse.com.ar)
