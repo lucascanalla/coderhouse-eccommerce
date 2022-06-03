@@ -19,6 +19,6 @@ npm start
 El proyecto esta listo para usarse en http://localhost:3000
 
 ## Contribuciones
-A todo el equipo de profesores y tutores de [CoderHouse](https://coderhouse.com.ar)
+A todo el equipo de profesores y tutores de [CoderHouse](https://coderhouse.com)
 ## Licencia
 [MIT](https://choosealicense.com/licenses/mit/)
