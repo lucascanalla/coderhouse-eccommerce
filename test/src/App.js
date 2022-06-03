@@ -7,6 +7,7 @@ import Home from './components/pages/Home';
 import Contact from './components/pages/Contact';
 import Error from './components/pages/Error';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import  {CartProvider}  from './context/CartContext';
 
 const theme = createTheme({
   palette: {
@@ -22,23 +23,25 @@ const theme = createTheme({
 function App() {
   return (
     <>
-    <ThemeProvider theme={theme}>
-    <div className="App">
-      <BrowserRouter>
-        <Navbar/>
-        <Routes>
-          <Route exact path='/' element={<ItemListContainer />}/>
-          <Route exact path='/home' element={<ItemListContainer />}/>
-          <Route exact path='/category/:name' element={<ItemListContainer />}/>
-          <Route exact path='/contact' element={<Contact />}/>
-          {/* <Route exact path='/products' element={}/> */}
-          <Route exact path='/category/:name/detail/:id' element={<ItemDetailContainer /> }/>
-          <Route exact path='/detail/:id' element={<ItemDetailContainer /> }/>
-          <Route exact path='*' element={<Error />}/>
-        </Routes>
-      </BrowserRouter>
-    </div>
-    </ThemeProvider>
+    <CartProvider>
+      <ThemeProvider theme={theme}>
+      <div className="App">
+        <BrowserRouter>
+          <Navbar/>
+          <Routes>
+            <Route exact path='/' element={<ItemListContainer />}/>
+            <Route exact path='/home' element={<ItemListContainer />}/>
+            <Route exact path='/category/:name' element={<ItemListContainer />}/>
+            <Route exact path='/contact' element={<Contact />}/>
+            {/* <Route exact path='/products' element={}/> */}
+            <Route exact path='/category/:name/detail/:id' element={<ItemDetailContainer /> }/>
+            <Route exact path='/detail/:id' element={<ItemDetailContainer /> }/>
+            <Route exact path='*' element={<Error />}/>
+          </Routes>
+        </BrowserRouter>
+      </div>
+      </ThemeProvider>
+    </CartProvider>
     </>
   );
 }

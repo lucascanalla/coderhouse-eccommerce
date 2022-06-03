@@ -18,7 +18,7 @@ const ItemDetail = ({item}) => {
     const onAdd = () => { 
         setShowButton(true);
     }
-    
+
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#1976d214',
         ...theme.typography.body2,
@@ -37,27 +37,29 @@ const ItemDetail = ({item}) => {
     return(
         <>
         <Grid item xs={2}>
-            <Item>
+            <Item className='item-detail-custom'>
                 {
                    img && img.map((i, index) => {
-                        <img key={index} className='detail-small-img' src={i} alt='title' />
+                        return(
+                            <img key={index} className='detail-small-img' src={`/${i}`} alt='title' />
+                        )
                     })
 
                 }
             </Item>
         </Grid>
         <Grid item xs={6}>
-            <Item>
+            <Item className='item-detail-custom'>
                 {
                     img && img !== 'undefined' ?
-                        <img className='detail-img' src={img[0]} alt='title' />
+                        <img className='detail-img' src={`/${img[0]}`} alt='title' />
                     :
                     <></>
                 }
             </Item>
         </Grid>
         <Grid item xs={4}>
-            <Item>
+            <Item className='item-detail-custom'>
                 <ItemBreadcrumb 
                     category={category} 
                     subcategory={subcategory} 

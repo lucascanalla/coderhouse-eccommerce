@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Card, CardContent, IconButton } from "@mui/material"
 import CloseIcon from '@mui/icons-material/Close';
 import FiberNewIcon from '@mui/icons-material/FiberNew';
@@ -7,6 +7,7 @@ import ItemModal from './ItemModal'
 import './Card.css'
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import CartContext from '../../context/CartContext';
 
 const Item = ({item}) => {
     
@@ -14,8 +15,11 @@ const Item = ({item}) => {
     const {img, title, price, stock, niu, id, category} = item
     const [open, setOpen] = useState(false);
     const [showButton, setShowButton] = useState(false);
+    const { addProductToCart } = useContext(CartContext)
 
     const onAdd = () => { 
+
+        addProductToCart(item);
         setShowButton(true);
         //console.log("Elementos a agregar al carrito: ", count) 
     }
@@ -33,7 +37,7 @@ const Item = ({item}) => {
                             { niu && (
                                 <FiberNewIcon className='icon-new'/>
                             )}
-                            <img src={img[0]} alt={title} />
+                            <img src={`/${img[0]}`} alt={title} />
                         </a>
                     </div>
                     <p>{title}</p>
@@ -48,6 +52,7 @@ const Item = ({item}) => {
                     </div>
                     <div>
                         <ItemCount 
+                            item={item}
                             stock={stock} 
                             initial={initial} 
                             showButton={showButton} 

@@ -1,51 +1,7 @@
-const initialCards2 = [
-    {
-        id: 1,
-        img: '/logo192.png',
-        title: 'Escoba',
-        price: 170,
-        stock: 5,
-        niu: true
-    },
-    {
-        id: 2,
-        img: '/perchas.jpg',
-        title: 'Perchas x20U',
-        price: 370,
-        stock: 0,
-        niu: false
-    },
-    {
-        id: 3,
-        img: '/pala.jpg',
-        title: 'Pala',
-        price: 194,
-        stock: 12,
-        niu: true
-    },
-    {
-        id: 4,
-        img: '/secador.jpg',
-        title: 'Secador de Piso',
-        price: 380,
-        stock: 9,
-        niu: false
-    },
-    {
-        id: 5,
-        img: '/mopa.jpg',
-        title: 'Mopa',
-        price: 1780,
-        stock: 2,
-        niu: false
-    }
-];
-
-
 const initialCards = [
     {
         id: 1,
-        img: ['/biota1.png', '/biota2.png'],
+        img: ['biota1.png', 'biota2.png'],
         title: 'BIOTA',
         description: 'Caño estructural 20x20mm y madera maciza - 40x30x70cm',
         category: 'Mesa',
@@ -63,7 +19,7 @@ const initialCards = [
     },
     {
         id: 2,
-        img: ['/betula1.png', '/betula2.png' ],
+        img: ['betula1.png', 'betula2.png' ],
         title: 'BETULA',
         description: 'Hierro y madera maciza - 40x30x70cm',
         category: 'Mesa',
@@ -81,7 +37,7 @@ const initialCards = [
     },
     {
         id: 3,
-        img: ['/baoba.png'],
+        img: ['baoba.png'],
         title: 'BAOBA',
         description: 'Madera maciza - 30x40x15cm',
         category: 'Mesa',
@@ -99,7 +55,7 @@ const initialCards = [
     },
     {
         id: 4,
-        img: ['/albizia1.png', '/albizia2.png' ],
+        img: ['albizia1.png', 'albizia2.png' ],
         title: 'ALBIZIA',
         description: 'Caño 20x20mm y madera maciza 60cm de diámetro x 40cm de alto',
         category: 'Mesa',
@@ -113,7 +69,7 @@ const initialCards = [
     },
     {
         id: 5,
-        img: ['/araucaria1.png', '/araucaria2.png' ],
+        img: ['araucaria1.png', 'araucaria2.png' ],
         title: 'ARAUCARIA',
         description: 'Caño 20x20mm y madera maciza con regrueso - 90x50x40cm',
         category: 'Mesa',
@@ -131,7 +87,7 @@ const initialCards = [
     },
     {
         id:6,
-        img: ['/almez1.png', '/almez2.png' ],
+        img: ['almez1.png', 'almez2.png' ],
         title: 'ALMEZ',
         description: 'Caño 20x20mm y concreto - 40x30x70cm',
         category: 'Mesa',
@@ -145,7 +101,7 @@ const initialCards = [
     },
     {
         id: 7,
-        img: ['/acacia1.png', '/acacia2.png' ],
+        img: ['acacia1.png', 'acacia2.png' ],
         title: 'ACACIA',
         description: 'Hierro y madera maciza - 40x30x70cm',
         category: 'Mesa',
@@ -163,7 +119,7 @@ const initialCards = [
     },
     {
         id: 8,
-        img: ['/agonis1.png', '/agonis2.png' ],
+        img: ['agonis1.png', 'agonis2.png' ],
         title: 'AGONIS',
         description: 'Caño 20x20mm y madera maciza - 30x30x75cm',
         category: 'Mesa',
@@ -181,7 +137,7 @@ const initialCards = [
     },
     {
         id: 9,
-        img: ['/azahar1.png', '/azahar2.png' ],
+        img: ['azahar1.png', 'azahar2.png' ],
         title: 'AZAHAR',
         description: 'Caño 20x20mm y madera maciza - 60x30x70cm',
         category: 'Mesa',
@@ -199,7 +155,7 @@ const initialCards = [
     },
     {
         id: 10,
-        img: ['/azahar1.png', '/azahar2.png' ],
+        img: ['azahar1.png', 'azahar2.png' ],
         title: 'AZAHAR',
         description: 'Caño 20x20mm y madera maciza - 60x30x70cm',
         category: 'Mesa',
@@ -217,7 +173,7 @@ const initialCards = [
     },
     {
         id: 11,
-        img: ['/ficus.png'],
+        img: ['ficus.png'],
         title: 'FICUS',
         description: 'Madera maciza - 120x25x90cm',
         category: 'Barra',
@@ -235,7 +191,7 @@ const initialCards = [
     },
     {
         id: 12,
-        img: ['/fotinia.png'],
+        img: ['fotinia.png'],
         title: 'FOTINIA',
         description: 'Madera maciza y concreto - 120x25x90cm',
         category: 'Barra',
@@ -253,7 +209,7 @@ const initialCards = [
     },
     {
         id: 13,
-        img: ['/farolillo.png'],
+        img: ['farolillo.png'],
         title: 'FAROLILLO',
         description: 'Caño estructural 20x20mm y madera maciza - 60x25x90cm',
         category: 'Barra',
@@ -271,7 +227,7 @@ const initialCards = [
     },
     {
         id: 14,
-        img: ['/morera1.png','/morera2.png'],
+        img: ['morera1.png','morera2.png'],
         title: 'MORERA',
         description: 'Caño 20x20mm y madera maciza - Altura de asiento 70cm, altura total 90cm',
         category: 'Sentar',
@@ -293,13 +249,6 @@ const initialCards = [
         niu: false
     }
 ];
-const itemMock = {
-    id: 4,
-    img: '/secador.jpg',
-    title: 'Secador de Piso',
-    price: 380,
-    stock: 9,
-    niu: false
-};
 
-export { initialCards, itemMock, initialCards2 }
+
+export { initialCards }

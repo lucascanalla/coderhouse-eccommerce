@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,7 +14,6 @@ import CartWidget from '../Cart/CartWidget';
 import { Link } from 'react-router-dom';
 
 
-//const pages = ['Limpieza', 'Perfumeria', 'Bazar', 'Contacto'];
 const pages = [
                 {
                   name: 'Mesas',
@@ -45,13 +44,12 @@ const NavBar = () => {
   const handleCloseNavMenu = () => setAnchorElNav(null);
 
   return (
-    // <div className='navbar-container'>
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
               
             <Link to={'/'}>
-              <img src="aliwenLogo2.png" alt="logo" className='img-custom'></img>
+              <img src="/aliwenLogo2.png" alt="logo" className='img-custom'></img>
             </Link>
             
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -115,7 +113,6 @@ const NavBar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-    // </div>
   );
 };
 export default NavBar;

@@ -15,7 +15,8 @@ const style = {
   p: 4,
 };
 
-const CartModal = ({handleClose, open}) => {
+const CartModal = ({handleClose, open, cartListItem}) => {
+    console.log("cartListItem desde modal", cartListItem)
     
     return (
         <>
@@ -31,6 +32,14 @@ const CartModal = ({handleClose, open}) => {
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         Productos
+                        { cartListItem && cartListItem.map((item) => {
+                            return(
+                            <ul key={item.id}>
+                                <li>{item.id} {item.title}</li> 
+                            </ul>
+                            )
+                        })
+                        }
                     </Typography>
                 </Box>
             </Modal>

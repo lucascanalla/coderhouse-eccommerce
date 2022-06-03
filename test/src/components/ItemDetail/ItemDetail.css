@@ -3,12 +3,17 @@
 }
 
 .detail-img:hover {
-    transform: scale(1.1);
+    opacity: 0.9;
+    /* transform: scale(1.1); */
 }
 
 .detail-small-img {
     width: 137px;
     margin-bottom: 15px;
+}
+
+.detail-small-img:hover {
+    opacity: 0.8;
 }
 
 .detail-button button {
@@ -22,6 +27,10 @@
 .breadcrumb-custom {
     margin-left: 15px;
     margin-top: 7px;
+}
+
+.item-detail-custom {
+  background-color: var(--mostLighterPrincipalColor) !important;
 }
 
 .grid-custom {

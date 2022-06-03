@@ -19,9 +19,9 @@ const ItemBreadcrumb = ({title, category, subcategory}) => {
                 <Link underline="hover" color="inherit" href="/">
                     {category}
                 </Link>
-                <Link underline="hover" color="inherit" href="/">
+                {/* <Link underline="hover" color="inherit" href="/">
                     {subcategory}
-                </Link>
+                </Link> */}
                 <Typography color="text.primary">{title}</Typography>
             </Breadcrumbs>
       </div>

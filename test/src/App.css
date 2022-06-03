@@ -1,6 +1,7 @@
 :root{
   --principalColor: #164749;
   --lighterPrincipalColor: #508c8e;
+  --mostLighterPrincipalColor: #508c8e14;
 }
 
 .App {

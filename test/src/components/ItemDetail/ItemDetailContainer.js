@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Grid } from '@mui/material';
-import { initialCards2, initialCards, itemMock } from '../../data';
+import { initialCards } from '../../data';
 import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer = () => {
@@ -9,18 +9,6 @@ const ItemDetailContainer = () => {
     const { id } = useParams();
     const [item, setItem] = useState([]);
     const navigate = useNavigate();
-
-    const getItem = () => {
-        return new Promise ((resolve, reject) => {
-            try {
-                setTimeout(() => {
-                    resolve(itemMock)
-                }, 2000)
-            } catch (err) {
-                reject(err)                
-            }
-        })
-    }
 
     const  getItemWithFilter =  () => {
 
