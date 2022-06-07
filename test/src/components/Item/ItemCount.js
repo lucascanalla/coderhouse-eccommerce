@@ -6,8 +6,6 @@ import Swal from 'sweetalert2';
 
 const ItemCount = ({ stock, initial, onAdd, showButton, count, setCount }) => {
 
-    //const [count, setCount] = useState(initial)
-
     const handleRestCount = () => { setCount(count - 1) }
     const handleAddCount = () => { setCount(count + 1) }
     const handleOnAdd = () => { 
@@ -36,9 +34,9 @@ const ItemCount = ({ stock, initial, onAdd, showButton, count, setCount }) => {
         }
         { showButton && 
             <Button variant='outlined' >
-                {/* <Link to={'/cart'}> */}
+                <Link to={'/cart'}>
                     Terminar mi compra
-                {/* </Link> */}
+                </Link>
             </Button>
         }
         </>

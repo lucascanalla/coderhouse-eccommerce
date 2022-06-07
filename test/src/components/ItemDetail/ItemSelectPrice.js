@@ -21,7 +21,7 @@ const ItemSelectPrice = ({
     const handleModal = () => { setOpen(!open); }
 
     const handleChangeSelect = (e) => {
-        setType(e.target.id)
+        setType(e.target.name)
         setPriceChosen(e.target.value)
     }
 
@@ -42,16 +42,17 @@ const ItemSelectPrice = ({
         }
         <FormControl sx={{ m: 1, minWidth: 80 }}>
             <Select
-                value={type}                
+                value={priceChosen}
+                name={type}                
                 onChange={handleChangeSelect}
                 autoWidth
-                label="Age"
+                label="Price"
             >
             {
 
                 price && price.map((pr, i) => {
                     return(
-                        <MenuItem key={i} value={pr.price} id={pr.type} >
+                        <MenuItem key={i} value={pr.price} name={pr.type} >
                             {pr.type}
                         </MenuItem>
                     )}
