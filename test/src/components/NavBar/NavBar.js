@@ -17,19 +17,19 @@ import { Link } from 'react-router-dom';
 const pages = [
                 {
                   name: 'Mesas',
-                  path: 'category/Mesa'
+                  path: 'category/mesa'
                 },
                 {
                   name: 'Barras',
-                  path: 'category/Barra'
+                  path: 'category/barra'
                 },
                 {
                   name: 'Sentar',
-                  path: 'category/Sentar'
+                  path: 'category/sentar'
                 },
                 {
                   name: 'Colgantes',
-                  path: 'category/Colgante'
+                  path: 'category/colgante'
                 },
                 {
                   name: 'Contacto',

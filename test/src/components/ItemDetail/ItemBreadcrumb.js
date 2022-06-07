@@ -11,7 +11,7 @@ const ItemBreadcrumb = ({title, category, subcategory}) => {
 
     const handleBreadcrumbClick = (e) => {
         if(e.target.id){
-            navigate(e.target.id, {replace: 'true'})
+            navigate((e.target.id).toLowerCase(), {replace: 'true'})
         }
         e.preventDefault()
     }

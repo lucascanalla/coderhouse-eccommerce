@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Grid } from '@mui/material';
-import { initialCards } from '../../data';
+import { getItemWithFilter } from '../../selectors';
 import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer = () => {
@@ -10,21 +10,8 @@ const ItemDetailContainer = () => {
     const [item, setItem] = useState([]);
     const navigate = useNavigate();
 
-    const  getItemWithFilter =  () => {
-
-        return new Promise ((resolve, reject) => {
-            setTimeout(() => {
-                let init =  initialCards.find((data) => { 
-                    return (data.id === parseInt(id))
-                    })
-                if (init) { resolve(init)
-                }else{ reject("error finding product") }
-            })
-        })
-    }
-
     useEffect(()=>{
-        getItemWithFilter()
+        getItemWithFilter(id)
         .then((res) => {
             setItem(res);
         })
@@ -34,9 +21,8 @@ const ItemDetailContainer = () => {
         })
         .finally(() => {
             console.log("Finally");
-
         })
-    },[])
+    },[id])
     
     return (
         <>

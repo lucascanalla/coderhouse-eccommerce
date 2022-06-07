@@ -1,71 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { Grid } from '@mui/material';
-import { initialCards } from '../../data';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Grid } from '@mui/material';
+import { getProducts, getProductsWithCategory } from '../../selectors';
 import ItemList from './ItemList';
 import './Card.css';
 
 const ItemListContainer = () => {
     
     const [itemArray, setItemArray] = useState();
-    const { name } = useParams();
+    const { categoryName } = useParams();
     const navigate = useNavigate()
 
-    const getProducts = () => {
-        return new Promise((resolve, reject) => {
-            let flag = true;
-
-            if(flag){
-                setTimeout( () => {
-                    resolve(initialCards);
-                }, 2000);
-            }else{
-                reject('Runtime Error')
-            }
-        })
-    }
-
-    const getProductsWithCategory = (category) => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                let init =  initialCards.filter((data) => { 
-                        return ( data.category === category )
-                    })
-                if (init.length > 0 ) { resolve(init)
-                }else{ reject("error finding products") }
-            })
-        })
-    }
-
     useEffect( ()=> {
-        if(name){
-            getProductsWithCategory(name)
-            .then( (res) => {
-                console.log(res)
-                setItemArray(res)
-            })
-            .catch( (err) => {
-                console.log("Error: ",err)
-                navigate('/notfoundproduct')
-            })
-            .finally( () => {
-                console.log("End of ejecution")
-            })
+        if(categoryName){
+            var productToShow = getProductsWithCategory(categoryName)
         }else{
-            getProducts()
-            .then( (res) => {
-                console.log(res)
-                setItemArray(res);
-            })
-            .catch( (err) => {
-                console.log("Error: ",err)
-            })
-            .finally( () => {
-                console.log("End of ejecution")
-            })
+            var productToShow = getProducts()
         }
-    
-    },[name])
+
+        productToShow
+        .then( (res) => {
+            console.log(res)
+            setItemArray(res);
+        })
+        .catch( (err) => {
+            console.log("Error: ",err)
+            navigate('/notfoundproduct')
+        })
+
+    },[categoryName])
 
     return (
         <div className='general-container'>

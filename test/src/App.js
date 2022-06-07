@@ -1,14 +1,13 @@
-import './App.css';
-import ItemListContainer from './components/Item/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
-import Navbar from './components/NavBar/NavBar'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import Home from './components/pages/Home';
-import Contact from './components/pages/Contact';
-import Error from './components/pages/Error';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import  {CartProvider}  from './context/CartContext';
+import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
+import ItemListContainer from './components/Item/ItemListContainer';
+import Navbar from './components/NavBar/NavBar'
+import Error from './components/pages/Error';
+import Contact from './components/pages/Contact';
 import Footer from './components/Footer/Footer';
+import { CartProvider }  from './context/CartContext';
+import './App.css';
 
 const theme = createTheme({
   palette: {
@@ -32,10 +31,10 @@ function App() {
           <Routes>
             <Route exact path='/' element={<ItemListContainer />}/>
             <Route exact path='/home' element={<ItemListContainer />}/>
-            <Route exact path='/category/:name' element={<ItemListContainer />}/>
+            <Route exact path='/category/:categoryName' element={<ItemListContainer />}/>
             <Route exact path='/contact' element={<Contact />}/>
             {/* <Route exact path='/products' element={}/> */}
-            <Route exact path='/category/:name/detail/:id' element={<ItemDetailContainer /> }/>
+            <Route exact path='/category/:categoryName/detail/:id' element={<ItemDetailContainer /> }/>
             <Route exact path='/detail/:id' element={<ItemDetailContainer /> }/>
             <Route exact path='*' element={<Error />}/>
           </Routes>
