@@ -14,7 +14,7 @@
   pointer-events: none;
 }
 
-h1, h2, h3, p, span, a, button {
+h1, h2, h3, h4, p, span, a, button {
     font-family: 'Work Sans', sans-serif !important;
     color: var(--principalColor) ;
 }
@@ -71,4 +71,10 @@ button {
 
 .navbar-container {
   width: 100%;
+}
+
+.footer-custom{
+  background-color: var(--principalColor);
+  display: block;
+  position: static;
 }

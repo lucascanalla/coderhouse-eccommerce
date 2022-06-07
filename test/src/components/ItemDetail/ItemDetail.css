@@ -27,8 +27,18 @@
 .breadcrumb-custom {
     margin-left: 15px;
     margin-top: 7px;
+    cursor: pointer;
 }
 
+.price-select-custom {
+    font-size: x-large;
+    margin-bottom: 10px;
+}
+.price-option-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .item-detail-custom {
   background-color: var(--mostLighterPrincipalColor) !important;
 }

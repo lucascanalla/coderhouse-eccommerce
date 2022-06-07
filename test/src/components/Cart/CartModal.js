@@ -2,6 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import {Card, CardContent} from '@mui/material'
 
 const style = {
   position: 'absolute',
@@ -16,33 +17,44 @@ const style = {
 };
 
 const CartModal = ({handleClose, open, cartListItem}) => {
-    console.log("cartListItem desde modal", cartListItem)
+    //console.log("cartListItem desde modal", cartListItem)
     
     return (
         <>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Carrito
+        <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+        >
+            {/* <Card style={{marginBottom: '15px'}}>                        
+                <CardContent style={{display: 'block'}}>
+                    <Typography sx={{ fontSize: 18 }} color="text.secondary" gutterBottom>
+                        Transferencia o Deposito <br/>
                     </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Productos
-                        { cartListItem && cartListItem.map((item) => {
-                            return(
-                            <ul key={item.id}>
-                                <li>{item.id} {item.title}</li> 
-                            </ul>
-                            )
-                        })
-                        }
+                    <Typography variant="body2">
+                        Precio:  <br/>
                     </Typography>
-                </Box>
-            </Modal>
+                </CardContent>
+            </Card> */}
+            <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                    Carrito
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    Productos
+                    { cartListItem && cartListItem.map((item) => {
+                        return(
+                        
+                        <ul key={item.id}>
+                            <li>{item.id} {item.title}</li> 
+                        </ul>
+                        )
+                    })
+                    }
+                </Typography>
+            </Box>
+        </Modal>
         </>
     );
 }

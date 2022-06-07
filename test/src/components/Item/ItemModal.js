@@ -1,10 +1,11 @@
 import React from 'react';
 import { Dialog, DialogContent } from '@mui/material';
 
-const ItemModal = ({open, handleCloseModal, children}) => {
+
+const ItemModal = ({open, handleModal, children}) => {
     return (
         <>
-        <Dialog maxWidth={'lg'} onClose={handleCloseModal} open={open}>
+        <Dialog maxWidth={'lg'} onClose={handleModal} open={open}>
             <DialogContent>
                 {children}
             </DialogContent>

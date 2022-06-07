@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Rating, Box, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
@@ -7,15 +7,24 @@ import ItemBreadcrumb from './ItemBreadcrumb';
 import ItemSelectPrice from './ItemSelectPrice';
 import ItemCount from '../Item/ItemCount'
 import './ItemDetail.css'
+import CartContext from '../../context/CartContext'
 
 
 const ItemDetail = ({item}) => {
 
+    let initial = 1
     const { img, title, description, category, subcategory, price, stock, niu } = item;
     const colors = ['yellow', 'orange', 'black', 'blue'];
     const [showButton, setShowButton] = useState(false);
+    const [priceChosen, setPriceChosen ] = useState('')
+    const [type, setType ] = useState('Seleccione')
+    const [count, setCount] = useState(initial)
+
+    const { addProductToCart } = useContext(CartContext);
 
     const onAdd = () => { 
+        let typeChosen = {'type': type, 'price': priceChosen}
+        addProductToCart(item, typeChosen, count);
         setShowButton(true);
     }
 
@@ -70,16 +79,31 @@ const ItemDetail = ({item}) => {
                     <div className='item-star'>
                         <Rating name="read-only" value={4} readOnly />
                     </div>
-                    <ItemSelectPrice price={price} />
+                    <ItemSelectPrice 
+                        price={price} 
+                        priceChosen={priceChosen} 
+                        setPriceChosen={setPriceChosen} 
+                        type={type}
+                        setType={setType}
+                    />
                     <p>Colores Disponibles</p>
                     <ItemDetailColors colors={colors} />
+                </Box>
+                <Box sx={boxValue}>
+                    <h4 style={{marginTop: '10px', marginBottom: '10px'}}>
+                        Caracteristicas del Producto
+                    </h4>
+                    <p>{description}</p>
+                    
                 </Box>
                 <div className='detail-button'>
                     <ItemCount 
                         stock={stock} 
                         initial={1} 
                         onAdd={onAdd} 
-                        showButton={showButton} 
+                        showButton={showButton}
+                        count={count}
+                        setCount={setCount}
                     />
                 </div>
             </Item>

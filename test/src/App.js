@@ -8,6 +8,7 @@ import Contact from './components/pages/Contact';
 import Error from './components/pages/Error';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import  {CartProvider}  from './context/CartContext';
+import Footer from './components/Footer/Footer';
 
 const theme = createTheme({
   palette: {
@@ -38,6 +39,7 @@ function App() {
             <Route exact path='/detail/:id' element={<ItemDetailContainer /> }/>
             <Route exact path='*' element={<Error />}/>
           </Routes>
+          <Footer/>
         </BrowserRouter>
       </div>
       </ThemeProvider>

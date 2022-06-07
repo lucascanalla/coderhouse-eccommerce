@@ -14,12 +14,13 @@ const Item = ({item}) => {
     let initial = 1;
     const {img, title, price, stock, niu, id, category} = item
     const [open, setOpen] = useState(false);
+    const [count, setCount] = useState(initial)
     const [showButton, setShowButton] = useState(false);
     const { addProductToCart } = useContext(CartContext)
 
     const onAdd = () => { 
 
-        addProductToCart(item);
+        addProductToCart(item, item.price[0], count);
         setShowButton(true);
         //console.log("Elementos a agregar al carrito: ", count) 
     }
@@ -57,6 +58,8 @@ const Item = ({item}) => {
                             initial={initial} 
                             showButton={showButton} 
                             onAdd={onAdd}
+                            count={count}
+                            setCount={setCount}
                             />
                     </div>
                 </div>
