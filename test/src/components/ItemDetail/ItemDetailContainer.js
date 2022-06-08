@@ -28,7 +28,7 @@ const ItemDetailContainer = () => {
         <>
         {
             <div className='detail-container'>
-                <h2>Detalle</h2>
+                <h2>DETALLE</h2>
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={2} alignItems="stretch">
                         <ItemDetail item={item} />   

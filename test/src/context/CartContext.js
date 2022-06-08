@@ -25,12 +25,24 @@ const CartProvider = ({children}) => {
         if(!isInCart){
             setCartListItem(cartListItem => [...cartListItem, itemToAdd]);
         }else{
-
+            
         }
     }
+
+    const removeItem = (itemId) => {
+        let newCartListItem = cartListItem.filter(item => item.id !== itemId )
+        setCartListItem(newCartListItem);
+    }
+
+    const clear = () => {
+        setCartListItem([]);
+    }
+
     const data = {
         cartListItem,
-        addProductToCart
+        addProductToCart,
+        removeItem,
+        clear
     }
     
     return (

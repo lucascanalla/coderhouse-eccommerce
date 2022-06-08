@@ -1,27 +1,26 @@
 import React from 'react';
 import CircleIcon from '@mui/icons-material/Circle';
+import { Link } from 'react-router-dom';
 
 const ItemDetailColors = ({colors}) => {
-    const handleChangeColor = () => {
-
-    }
-
     return (
+        <>
+        <p>Colores Disponibles</p>
         <div className='item-colors'>
-        <p>
-            {
-            colors.map((color, i) => {
-                return(
-
-                    <a href='#' key={i} name={color} onClick={handleChangeColor}>
-                        <CircleIcon style={{color:`${color}`}}></CircleIcon>
-                    </a>
-                )
-            })
-            }
-        </p>
-
+            <p>
+                {
+                    colors.map((color, i) => {
+                        return(   
+                            <Link to={''} key={i} >
+                                <CircleIcon style={{color:`${color}`}}></CircleIcon>
+                            </Link> 
+                        )
+                    })
+                }
+            </p>
         </div>
+        </>
+
     );
 };
 

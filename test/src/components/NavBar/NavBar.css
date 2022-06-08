@@ -14,3 +14,24 @@
     background-color: #0f3031;
 }
 
+.img-cart{
+    height: 75px;
+    width: 75px;
+    margin-right: 10px;
+}
+
+.modal-cart-div div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-modal-div-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-modal-div-buttons button a{
+    color: white;
+}

@@ -4,6 +4,7 @@ import { Grid } from '@mui/material';
 import { getProducts, getProductsWithCategory } from '../../selectors';
 import ItemList from './ItemList';
 import './Card.css';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const ItemListContainer = () => {
     
@@ -41,8 +42,8 @@ const ItemListContainer = () => {
                             <ItemList key={i} item={items} />
                         )
                     })
-                :
-                    <h3>Espere...</h3>
+                    :   
+                        <h3>Espere...</h3>
                 }
             </Grid>
         </div>

@@ -79,8 +79,8 @@ const ItemSelectPrice = ({
                             Mercado Pago <br/>
                         </Typography>
                         <Typography variant="body2">
-                            6 cuotas sin Interes de {priceChosen/6} <br/>
-                            3 cuotas sin Interes de {priceChosen/3}
+                            6 cuotas sin Interes de {Math.round(priceChosen/6, 2)} <br/>
+                            3 cuotas sin Interes de {Math.round(priceChosen/3, 2)}
                         </Typography>
                     </CardContent>
                 </Card>

@@ -8,6 +8,10 @@ import ItemSelectPrice from './ItemSelectPrice';
 import ItemCount from '../Item/ItemCount'
 import './ItemDetail.css'
 import CartContext from '../../context/CartContext'
+import ItemDetailImage from './ItemDetailImage';
+import ItemDetailSmallImages from './ItemDetailSmallImages';
+import ItemDetailTitle from './ItemDetailTitle';
+import ItemDetailDescription from './ItemDetailDescription';
 
 
 const ItemDetail = ({item}) => {
@@ -46,26 +50,10 @@ const ItemDetail = ({item}) => {
     return(
         <>
         <Grid item xs={2}>
-            <Item className='item-detail-custom'>
-                {
-                   img && img.map((i, index) => {
-                        return(
-                            <img key={index} className='detail-small-img' src={`/${i}`} alt='title' />
-                        )
-                    })
-
-                }
-            </Item>
+            <ItemDetailSmallImages Item={Item} img={img}/>
         </Grid>
         <Grid item xs={6}>
-            <Item className='item-detail-custom'>
-                {
-                    img && img !== 'undefined' ?
-                        <img className='detail-img' src={`/${img[0]}`} alt='title' />
-                    :
-                    <></>
-                }
-            </Item>
+            <ItemDetailImage Item={Item} img={img}/>
         </Grid>
         <Grid item xs={4}>
             <Item className='item-detail-custom'>
@@ -75,10 +63,7 @@ const ItemDetail = ({item}) => {
                     title={title}
                 />
                 <Box sx={boxValue}>
-                    <h1>{title}</h1>
-                    <div className='item-star'>
-                        <Rating name="read-only" value={4} readOnly />
-                    </div>
+                    <ItemDetailTitle title={title} />
                     <ItemSelectPrice 
                         price={price} 
                         priceChosen={priceChosen} 
@@ -86,15 +71,10 @@ const ItemDetail = ({item}) => {
                         type={type}
                         setType={setType}
                     />
-                    <p>Colores Disponibles</p>
                     <ItemDetailColors colors={colors} />
                 </Box>
                 <Box sx={boxValue}>
-                    <h4 style={{marginTop: '10px', marginBottom: '10px'}}>
-                        Caracteristicas del Producto
-                    </h4>
-                    <p>{description}</p>
-                    
+                    <ItemDetailDescription description={description} />
                 </Box>
                 <div className='detail-button'>
                     <ItemCount 
