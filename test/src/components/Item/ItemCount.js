@@ -3,7 +3,6 @@ import { Button } from '@mui/material';
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2';
 
-
 const ItemCount = ({ stock, initial, onAdd, showButton, count, setCount }) => {
 
     const handleRestCount = () => { setCount(count - 1) }

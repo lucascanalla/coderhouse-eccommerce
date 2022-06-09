@@ -1,0 +1,14 @@
+.table-quantity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-quantity div{
+    display: grid;
+    margin-left: 10px;
+}
+
+.table-quantity div button{
+    height: 25px;
+}

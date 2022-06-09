@@ -1,29 +1,20 @@
 import React, { useState } from 'react';
-import { Select, MenuItem, FormControl } from '@mui/material';
+import { Select, MenuItem, FormControl, Typography, Card, CardContent } from '@mui/material';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import ItemDetailModal from './ItemDetailModal';
-import { Card } from '@mui/material';
-import { CardContent } from '@mui/material';
-import { Typography } from '@mui/material';
-
-
 
 const ItemSelectPrice = ({
-            price, 
+            priceArray, 
             setPriceChosen, 
             priceChosen,
-            type,
             setType
         }) => {
-    //const [type, setType ] = useState('Seleccione')
+            
     const [open, setOpen] = useState(false)
-
+    
     const handleModal = () => { setOpen(!open); }
-
-    const handleChangeSelect = (e) => {
-        setType(e.target.name)
-        setPriceChosen(e.target.value)
-    }
+    const handleChangeSelect = (e) => setPriceChosen(e.target.value)
+    const handleChangeMenuItem = (e) => setType(e.target.getAttribute("data-type"))
 
     return (
         <>
@@ -43,21 +34,26 @@ const ItemSelectPrice = ({
         <FormControl sx={{ m: 1, minWidth: 80 }}>
             <Select
                 value={priceChosen}
-                name={type}                
                 onChange={handleChangeSelect}
                 autoWidth
-                label="Price"
+                displayEmpty
             >
+                <MenuItem disabled value="">
+                    <em style={{color:'grey'}}>Seleccione</em>
+                </MenuItem>
             {
-
-                price && price.map((pr, i) => {
-                    return(
-                        <MenuItem key={i} value={pr.price} name={pr.type} >
-                            {pr.type}
-                        </MenuItem>
-                    )}
-                )
-            
+            priceArray && priceArray.map((price, i) => {
+                return(
+                    <MenuItem 
+                        key={i} 
+                        value={price.price}
+                        data-type={price.type}
+                        onClick={handleChangeMenuItem} 
+                    >
+                        {price.type}
+                    </MenuItem>
+                )}
+            )
             } 
             </Select>
         </FormControl>
@@ -69,7 +65,10 @@ const ItemSelectPrice = ({
                             Transferencia o Deposito <br/>
                         </Typography>
                         <Typography variant="body2">
-                            Precio: {priceChosen} <br/>
+                            10% de Descuento! <br/>
+                        </Typography>
+                        <Typography variant="body2">
+                            Precio: {priceChosen * 0.9} <br/>
                         </Typography>
                     </CardContent>
                 </Card>

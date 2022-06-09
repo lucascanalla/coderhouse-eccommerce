@@ -3,15 +3,6 @@
     --lighterPrincipalColor: #508c8e;
     --darkerPrincipalColor: #0f3031;
   }
-/* .grid-custom{
-    margin-right: 7px !important;
-    margin-bottom: 15px !important;
-}
-
-.p-card-custom{
-    font-weight: bolder;
-    font-size: larger;
-} */
 
 .card-item-gral {
     margin-left: 15px;
@@ -61,11 +52,7 @@
 
 }
 
-.modal-div img {
-    max-width: 100%;
-    height: auto;
-    width: 500px;
-}
+.modal-div img {max-width: 100%;height: auto;width: 500px;}
 
 .card-item {display: flex;flex-direction: column;}
 

@@ -2,8 +2,8 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
 import ItemListContainer from './components/Item/ItemListContainer';
+import CheckoutTable from './components/Checkout/CheckoutTable';
 import Navbar from './components/NavBar/NavBar'
-import Cart from './components/pages/Cart';
 import Error from './components/pages/Error';
 import Contact from './components/pages/Contact';
 import Footer from './components/Footer/Footer';
@@ -32,7 +32,8 @@ function App() {
           <Routes>
             <Route exact path='/' element={<ItemListContainer />}/>
             <Route exact path='/home' element={<ItemListContainer />}/>
-            <Route exact path='/cart' element={<Cart />}/>
+            {/* <Route exact path='/cart' element={<Cart />}/> */}
+            <Route exact path='/cart' element={<CheckoutTable />}/>
             <Route exact path='/category/:categoryName' element={<ItemListContainer />}/>
             <Route exact path='/contact' element={<Contact />}/>
             {/* <Route exact path='/products' element={}/> */}

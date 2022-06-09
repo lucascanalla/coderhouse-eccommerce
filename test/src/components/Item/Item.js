@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react'
 import { Card, CardContent } from "@mui/material"
-import ItemCount from './ItemCount'
-import './Card.css'
-
 import CartContext from '../../context/CartContext';
+
 import ItemCardHeader from './ItemCardHeader';
 import ItemCardBody from './ItemCardBody';
+import ItemCount from './ItemCount'
+import './Card.css'
 
 const Item = ({item}) => {
     
@@ -16,12 +16,9 @@ const Item = ({item}) => {
     const { addProductToCart } = useContext(CartContext)
 
     const onAdd = () => { 
-
         addProductToCart(item, price[0], count);
         setShowButton(true);
-        //console.log("Elementos a agregar al carrito: ", count) 
     }
-
 
     return(
         <>

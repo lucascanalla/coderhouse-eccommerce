@@ -4,11 +4,11 @@ import { Grid } from '@mui/material';
 import { getProducts, getProductsWithCategory } from '../../selectors';
 import ItemList from './ItemList';
 import './Card.css';
-import LinearProgress from '@mui/material/LinearProgress';
 
 const ItemListContainer = () => {
     
     const [itemArray, setItemArray] = useState();
+    const [header, setHeader] = useState();
     const { categoryName } = useParams();
     const navigate = useNavigate()
 
@@ -23,6 +23,7 @@ const ItemListContainer = () => {
         .then( (res) => {
             console.log(res)
             setItemArray(res);
+            setHeader(categoryName ? categoryName.toUpperCase() : "Aliwen" )
         })
         .catch( (err) => {
             console.log("Error: ",err)
@@ -33,7 +34,7 @@ const ItemListContainer = () => {
 
     return (
         <div className='general-container'>
-            <h1 className="title">Ecommerce</h1>
+            <h1 className="title">{header}</h1>
             <Grid container>
                 { 
                 itemArray != null ?

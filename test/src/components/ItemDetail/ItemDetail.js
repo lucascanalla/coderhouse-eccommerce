@@ -1,24 +1,25 @@
 import React, { useState, useContext } from 'react';
-import { Rating, Box, Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import ItemDetailColors from './ItemDetailColors';
-import ItemBreadcrumb from './ItemBreadcrumb';
-import ItemSelectPrice from './ItemSelectPrice';
-import ItemCount from '../Item/ItemCount'
-import './ItemDetail.css'
 import CartContext from '../../context/CartContext'
-import ItemDetailImage from './ItemDetailImage';
-import ItemDetailSmallImages from './ItemDetailSmallImages';
-import ItemDetailTitle from './ItemDetailTitle';
-import ItemDetailDescription from './ItemDetailDescription';
 
+import ItemDetailSmallImages from './ItemDetailSmallImages';
+import ItemDetailImage from './ItemDetailImage';
+import ItemBreadcrumb from './ItemBreadcrumb';
+import ItemDetailTitle from './ItemDetailTitle';
+import ItemSelectPrice from './ItemSelectPrice';
+import ItemDetailColors from './ItemDetailColors';
+import ItemDetailDescription from './ItemDetailDescription';
+import ItemCount from '../Item/ItemCount'
+
+import './ItemDetail.css'
 
 const ItemDetail = ({item}) => {
 
     let initial = 1
     const { img, title, description, category, subcategory, price, stock, niu } = item;
-    const colors = ['yellow', 'orange', 'black', 'blue'];
+    const colors = ['#d3a58d', '#c99881', '#bb825e', '#c37321'];
     const [showButton, setShowButton] = useState(false);
     const [priceChosen, setPriceChosen ] = useState('')
     const [type, setType ] = useState('Seleccione')
@@ -65,7 +66,7 @@ const ItemDetail = ({item}) => {
                 <Box sx={boxValue}>
                     <ItemDetailTitle title={title} />
                     <ItemSelectPrice 
-                        price={price} 
+                        priceArray={price} 
                         priceChosen={priceChosen} 
                         setPriceChosen={setPriceChosen} 
                         type={type}
@@ -76,16 +77,19 @@ const ItemDetail = ({item}) => {
                 <Box sx={boxValue}>
                     <ItemDetailDescription description={description} />
                 </Box>
-                <div className='detail-button'>
-                    <ItemCount 
-                        stock={stock} 
-                        initial={1} 
-                        onAdd={onAdd} 
-                        showButton={showButton}
-                        count={count}
-                        setCount={setCount}
-                    />
-                </div>
+                {
+                    priceChosen &&
+                    <div className='detail-button'>
+                        <ItemCount 
+                            stock={stock} 
+                            initial={1} 
+                            onAdd={onAdd} 
+                            showButton={showButton}
+                            count={count}
+                            setCount={setCount}
+                            />
+                    </div>
+                }
             </Item>
         </Grid>
         </>

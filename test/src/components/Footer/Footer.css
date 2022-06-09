@@ -1,0 +1,11 @@
+.p-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-custom{
+    background-color: var(--principalColor);
+    display: block;
+    position: static;
+}

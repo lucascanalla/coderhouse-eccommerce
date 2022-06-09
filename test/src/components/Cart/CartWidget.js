@@ -1,11 +1,10 @@
 //add CartWidget like a functional component at the end of NavBar 
 import { Button, Card, CardContent, Typography } from '@mui/material';
 import React, { useState, useContext } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import Brightness1Icon from '@mui/icons-material/Brightness1';
 import CartContext from '../../context/CartContext';
 import CartModal from './CartModal';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 //Snippets rscp
 
@@ -15,13 +14,12 @@ const CartWidget = () => {
     
     const handleModal = () => setOpen(!open)
     const handleDeleteButton = (e) => removeItem(e)
-
     return (
         <>
         <Button style={{backgroundColor: 'white', marginRight: '15px'}} onClick={handleModal}>
             <span className='span-cart'>
                 <ShoppingCartIcon className='shop-cart'/>
-                <Brightness1Icon className='quantity-cart'/>
+                {cartListItem.length}
             </span>
         </Button>
         
@@ -51,7 +49,7 @@ const CartWidget = () => {
                             <Typography style={{marginRight:'15px'}}variant="body3">
                                 {item.quantity}
                             </Typography>
-                            <Button value={item.id} onClick={(e) => handleDeleteButton(item.id)}>
+                            <Button value={item.id} onClick={(e) => handleDeleteButton(item.id, item.type)}>
                                 <DeleteIcon />
                             </Button>
                         </CardContent>

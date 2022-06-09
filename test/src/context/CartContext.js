@@ -4,45 +4,69 @@ const CartContext = createContext();
 
 const CartProvider = ({children}) => {
     const [cartListItem, setCartListItem] = useState([])
-    const [item, setItem] = useState([])
-    const [count, setCount] = useState([])
-    const [type, setType] = useState([])
+    const [total, setTotal] = useState(0)
     
     const addProductToCart = (product, typeChosen, quantity) => {
-        console.log("productos a agregar al carrito:", product)
-        console.log("Precio elegido:", typeChosen)
-        console.log("quantity:", quantity)
-        let itemToAdd = {
-                    'id': product.id,
-                    'title': product.title,
-                    'type': typeChosen.type,
-                    'price': typeChosen.price,
-                    'quantity': quantity,
-                    'img': product.img[0]
-                }
-        
-        let isInCart = cartListItem.find(item => item.id === product.id)
+        const { id, title, img } = product;
+        const { type, price } = typeChosen;
+
+        let isInCart = cartListItem.find(item => item.id === id && item.type === type)
         if(!isInCart){
+            let itemToAdd = {
+                                'id': id,
+                                'title': title,
+                                'type': type,
+                                'price': price,
+                                'quantity': quantity,
+                                'img': img[0]
+                            }
             setCartListItem(cartListItem => [...cartListItem, itemToAdd]);
         }else{
-            
+            modifyQuantity(id, type, (isInCart.quantity + quantity))
         }
     }
 
-    const removeItem = (itemId) => {
-        let newCartListItem = cartListItem.filter(item => item.id !== itemId )
+    const modifyQuantity = (id, type, quantityToAdd) => {
+        const newList = cartListItem.map(item => {
+            if(item.id === id && item.type === type) { 
+                return {...item, quantity: quantityToAdd}
+            }else{ 
+                return item
+            }
+        })
+        setCartListItem(newList);
+    }
+
+    const removeItem = (itemId, type) => {
+        let newCartListItem = cartListItem.filter(item => 
+            (item.id !== itemId))
         setCartListItem(newCartListItem);
     }
 
     const clear = () => {
         setCartListItem([]);
+        setTotal(0)
+    }
+
+    const getListItemTotal = () => {
+        const initialValue = 0;
+        const sumTotal = 
+            cartListItem.reduce(
+                (previousValue, currentValue) => 
+                    previousValue + (currentValue.price * currentValue.quantity), 
+                    initialValue
+            );
+        setTotal(sumTotal)
     }
 
     const data = {
         cartListItem,
         addProductToCart,
         removeItem,
-        clear
+        clear,
+        getListItemTotal,
+        modifyQuantity,
+        total
     }
     
     return (

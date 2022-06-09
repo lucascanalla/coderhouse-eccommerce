@@ -1,6 +1,6 @@
 :root{
   --principalColor: #164749;
-  --lighterPrincipalColor: #508c8e;
+  --lighterPrincipalColor: #97b09f;
   --mostLighterPrincipalColor: #508c8e14;
 }
 
@@ -14,7 +14,7 @@
   pointer-events: none;
 }
 
-h1, h2, h3, h4, p, span, a, button {
+h1, h2, h3, h4, p, span, a, button, th, td {
     font-family: 'Work Sans', sans-serif !important;
     color: var(--principalColor) ;
 }
@@ -73,8 +73,11 @@ button {
   width: 100%;
 }
 
-.footer-custom{
-  background-color: var(--principalColor);
-  display: block;
-  position: static;
+.table-footer-custom{
+  border-top: 2px solid var(--lighterPrincipalColor);
+}
+
+.table-footer-custom td{
+  font-size: larger;
+  font-weight: 600;
 }

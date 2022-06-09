@@ -20,7 +20,7 @@ const ItemCardHeader = ({img, title, price, niu}) => {
                 <img src={`/${img[0]}`} alt={title} />
             </Link>
         </div>
-
+        
         <p>{title}</p>
         <span>${price[0].price}</span> 
 
