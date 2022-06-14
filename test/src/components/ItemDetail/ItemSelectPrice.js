@@ -37,6 +37,7 @@ const ItemSelectPrice = ({
                 onChange={handleChangeSelect}
                 autoWidth
                 displayEmpty
+                style={{fontFamily: 'DINNextRoundedLTPro'}}
             >
                 <MenuItem disabled value="">
                     <em style={{color:'grey'}}>Seleccione</em>
@@ -48,7 +49,8 @@ const ItemSelectPrice = ({
                         key={i} 
                         value={price.price}
                         data-type={price.type}
-                        onClick={handleChangeMenuItem} 
+                        onClick={handleChangeMenuItem}
+                        className="select-item-custom"
                     >
                         {price.type}
                     </MenuItem>

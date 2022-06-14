@@ -45,13 +45,13 @@ const NavBar = () => {
 
   return (
       <AppBar position="static">
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" className='nav-custom'>
           <Toolbar disableGutters>
-              
+
             <Link to={'/'}>
-              <img src="/aliwenLogo2.png" alt="logo" className='img-custom'></img>
+              <img src="/aliwenLogoHD.png" alt="logo" className='img-custom'></img>
             </Link>
-            
+
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
                 size="large"
@@ -106,9 +106,12 @@ const NavBar = () => {
             ))}
             </Box>
             
-            <CartWidget />
-            <div className='nav-button-login'>
-              <Button variant="contained" >Login</Button>
+            
+            <div style={{display:'contents'}}>
+              <CartWidget />
+              <div className='nav-button-login'>
+                <Button variant="contained" >Login</Button>
+              </div>
             </div>
           </Toolbar>
         </Container>

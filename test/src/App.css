@@ -1,12 +1,14 @@
 :root{
-  --principalColor: #164749;
-  --lighterPrincipalColor: #97b09f;
+  --principalColor: #174545;
+  --lighterPrincipalColor: #9cb09e;
   --mostLighterPrincipalColor: #508c8e14;
+  --secundaryColor: #ed9b59;
 }
 
 .App {
   text-align: center;
-  font-family: 'Work Sans', sans-serif;;
+  font-family: 'DINNextRoundedLTPro';
+  /* font-family: 'Work Sans', sans-serif;; */
 }
 
 .App-logo {
@@ -14,8 +16,9 @@
   pointer-events: none;
 }
 
-h1, h2, h3, h4, p, span, a, button, th, td {
-    font-family: 'Work Sans', sans-serif !important;
+h1, h2, h3, h4, p, span, a, button, th, td, ul, li {
+    font-family: "DINNextRoundedLTPro" !important;
+    /* font-family: 'Work Sans', sans-serif !important; */
     color: var(--principalColor) ;
 }
 
@@ -80,4 +83,16 @@ button {
 .table-footer-custom td{
   font-size: larger;
   font-weight: 600;
+}
+
+.send-container {
+  background-color: var(--principalColor);
+  margin: 0px;
+  max-width: 100%;
+}
+
+.send-container p {
+  color: white;
+  padding: 10px;
+  margin: 0px;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Box, Grid } from '@mui/material';
+import { Box, Divider, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import CartContext from '../../context/CartContext'
@@ -19,7 +19,22 @@ const ItemDetail = ({item}) => {
 
     let initial = 1
     const { img, title, description, category, subcategory, price, stock, niu } = item;
-    const colors = ['#d3a58d', '#c99881', '#bb825e', '#c37321'];
+    const colors = [{
+                        color:'#d3a58d',
+                        name: 'Nogal'
+                    },
+                    {
+                        color:'#c99881',
+                        name: 'Cedro'
+                    },
+                    {
+                        color:'#bb825e',
+                        name: 'Roble'
+                    },
+                    {
+                        color:'#c37321',
+                        name: 'Algarrobo'
+                    }]
     const [showButton, setShowButton] = useState(false);
     const [priceChosen, setPriceChosen ] = useState('')
     const [type, setType ] = useState('Seleccione')

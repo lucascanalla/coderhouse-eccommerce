@@ -5,7 +5,7 @@
 }
 
 .footer-custom{
-    background-color: var(--principalColor);
+    background-color: var(--secundaryColor);
     display: block;
     position: static;
 }

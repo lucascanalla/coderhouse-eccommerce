@@ -6,7 +6,7 @@ import Item from './Item';
 const ItemList = ({item}) => {
     return (
         <>
-        <Grid item md={3}>
+        <Grid item md={4}>
             <div className='card-item-gral'>
                 <Item item={item} />
             </div>

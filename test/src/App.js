@@ -9,6 +9,7 @@ import Contact from './components/pages/Contact';
 import Footer from './components/Footer/Footer';
 import { CartProvider }  from './context/CartContext';
 import './App.css';
+import Send from './components/pages/Send';
 
 const theme = createTheme({
   palette: {
@@ -28,6 +29,7 @@ function App() {
       <ThemeProvider theme={theme}>
       <div className="App">
         <BrowserRouter>
+          <Send/>
           <Navbar/>
           <Routes>
             <Route exact path='/' element={<ItemListContainer />}/>

@@ -22,7 +22,7 @@ const ItemCardHeader = ({img, title, price, niu}) => {
         </div>
         
         <p>{title}</p>
-        <span>${price[0].price}</span> 
+        <span>Desde ${price[0].price}</span> 
 
         {open && ( 
             <ItemModal handleModal={handleModal} open={open}>

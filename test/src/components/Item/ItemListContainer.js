@@ -12,6 +12,26 @@ const ItemListContainer = () => {
     const { categoryName } = useParams();
     const navigate = useNavigate()
 
+    // useEffect( ()=> {
+
+    //     console.log(categoryName)
+    //     getProducts()
+    //     .then( (res) => {
+    //         setItemArray(categoryName ? 
+    //                        res.filter(item => item.category === categoryName) 
+    //                     :  
+    //                         res
+    //                     );
+    //     })
+    //     .catch( (err) => {
+    //         console.log("Error: ",err)
+    //         navigate('/notfoundproduct')
+    //     })
+
+    //     setHeader(categoryName ? categoryName.toUpperCase() : "Aliwen" )
+ 
+    // },[categoryName, navigate])
+
     useEffect( ()=> {
         if(categoryName){
             var productToShow = getProductsWithCategory(categoryName)
@@ -21,9 +41,8 @@ const ItemListContainer = () => {
 
         productToShow
         .then( (res) => {
-            console.log(res)
             setItemArray(res);
-            setHeader(categoryName ? categoryName.toUpperCase() : "Aliwen" )
+            setHeader(categoryName ? categoryName.toUpperCase() : '' )
         })
         .catch( (err) => {
             console.log("Error: ",err)
@@ -34,6 +53,7 @@ const ItemListContainer = () => {
 
     return (
         <div className='general-container'>
+            <img src='/AliwenH1Secundary.png' className='img-item-container'/>
             <h1 className="title">{header}</h1>
             <Grid container>
                 { 

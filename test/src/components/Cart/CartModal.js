@@ -31,7 +31,16 @@ const CartModal = ({handleModal, open, cartListItem, clear, children}) => {
                             </Button>
                             </div>
                         :
+                            <>
                             <h4>No hay productos en el Carrito</h4>
+                            <div style={{justifyContent: 'center'}}>
+                                <Button variant='outlined'>
+                                    <Link to={'/'} onClick={handleModal} >
+                                        Comprar algo!
+                                    </Link>
+                                </Button>
+                            </div>
+                            </>
                     }
 
                 </div>
