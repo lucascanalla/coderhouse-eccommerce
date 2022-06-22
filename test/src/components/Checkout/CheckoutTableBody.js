@@ -13,9 +13,10 @@ const CheckoutTableBody = ({
     return (
         <TableBody>
             {
-                cartListItem.map((item) => {
+                cartListItem && cartListItem.map((item, index) => {
                     return (
                         <CheckoutTableBodyRow 
+                            key={index}
                             item={item}
                             handleDeleteButton={handleDeleteButton}
                             handleChangeQuantity={handleChangeQuantity}

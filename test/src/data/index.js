@@ -251,4 +251,29 @@ const initialCards = [
 ];
 
 
-export { initialCards }
+const statesMock = [
+    'Buenos Aires',
+    'Santa Fe',
+    'Catamarca'
+];
+
+const citiesMock = [{
+    name: 'Guamini',
+    state:'Buenos Aires'
+},
+{
+    name: 'Olavarria',
+    state:'Buenos Aires'
+},
+{
+    name: 'Acebal',
+    state:'Santa Fe'
+},
+{
+    name: 'Rosario',
+    state:'Santa Fe'
+},
+
+]
+
+export { initialCards, citiesMock, statesMock }

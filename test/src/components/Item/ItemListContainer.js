@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Grid } from '@mui/material';
-import { getProducts, getProductsWithCategory } from '../../selectors';
+import { getProducts, getProductsWithCategory, getProductsFirebase } from '../../selectors';
 import ItemList from './ItemList';
 import './Card.css';
+
+import { collection, doc, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../../utils/firebase';
 
 const ItemListContainer = () => {
     
@@ -11,6 +14,38 @@ const ItemListContainer = () => {
     const [header, setHeader] = useState();
     const { categoryName } = useParams();
     const navigate = useNavigate()
+
+    useEffect( ()=> {
+
+       
+        const productToShow = getProductsFirebase(categoryName);
+        productToShow
+        .then( (res) => {
+            console.log("holasas")
+            setItemArray(res);
+        })
+        .catch( (err) => {
+            console.log("Error: ", err);
+            navigate('/notfoundproduct');
+        })
+        
+        // .then( (res) => {
+
+        //     console.log(res);
+        //     // setItemArray(
+        //     //     res.map(item => ({
+        //     //         id: item.id, ...item.data() 
+        //     //     }))
+        //     // );
+        // })
+        // .catch( (err) => {
+        //     console.log("Error: ",err)
+        //     navigate('/notfoundproduct')
+        // })
+
+        setHeader(categoryName ? categoryName.toUpperCase() : "" )
+ 
+    },[categoryName, navigate])
 
     // useEffect( ()=> {
 
@@ -28,28 +63,44 @@ const ItemListContainer = () => {
     //         navigate('/notfoundproduct')
     //     })
 
-    //     setHeader(categoryName ? categoryName.toUpperCase() : "Aliwen" )
+    //     setHeader(categoryName ? categoryName.toUpperCase() : "" )
  
     // },[categoryName, navigate])
 
-    useEffect( ()=> {
-        if(categoryName){
-            var productToShow = getProductsWithCategory(categoryName)
-        }else{
-            var productToShow = getProducts()
-        }
+    // useEffect( ()=> {
+    //     if(categoryName){
+    //         var productToShow = getProductsWithCategory(categoryName)
+    //     }else{
+    //         var productToShow = getProducts()
+    //     }
 
-        productToShow
-        .then( (res) => {
-            setItemArray(res);
-            setHeader(categoryName ? categoryName.toUpperCase() : '' )
-        })
-        .catch( (err) => {
-            console.log("Error: ",err)
-            navigate('/notfoundproduct')
-        })
+    //     productToShow
+    //     .then( (res) => {
+    //         setItemArray(res);
+    //         setHeader(categoryName ? categoryName.toUpperCase() : '' )
+    //     })
+    //     .catch( (err) => {
+    //         console.log("Error: ",err)
+    //         navigate('/notfoundproduct')
+    //     })
 
-    },[categoryName])
+    // },[categoryName])
+
+    // useEffect(() =>{
+    //     getProductsFirebase();
+    // },[]);
+
+    // const getProductsFirebase = async () => {
+    
+    //     const productSnapshot = await getDocs(collection(db, 'productos'));
+    //     const productList = productSnapshot.docs.map((doc)=>{
+    //         console.log(doc)
+    //         return doc.data();
+    //     })
+    
+    //     console.log(productList);
+    // }
+
 
     return (
         <div className='general-container'>

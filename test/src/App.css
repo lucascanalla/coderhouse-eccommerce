@@ -16,7 +16,7 @@
   pointer-events: none;
 }
 
-h1, h2, h3, h4, p, span, a, button, th, td, ul, li {
+h1, h2, h3, h4, p, span, a, button, th, td, ul, li, div {
     font-family: "DINNextRoundedLTPro" !important;
     /* font-family: 'Work Sans', sans-serif !important; */
     color: var(--principalColor) ;
@@ -88,7 +88,7 @@ button {
 .send-container {
   background-color: var(--principalColor);
   margin: 0px;
-  max-width: 100%;
+  max-width: 100% !important;
 }
 
 .send-container p {

@@ -1,0 +1,19 @@
+.checkout-container-custom{
+    margin-top: 40px;
+    max-width: 100%;
+    padding: 20px;
+}
+
+.checkout-form{
+    display: grid;
+    justify-content: center;
+}
+
+.checkout-form div div div{
+    margin-top: 2px;
+    width: 98%;
+}
+
+.checkout-form div label{
+    font-family: 'DINNextRoundedLTPro';
+}

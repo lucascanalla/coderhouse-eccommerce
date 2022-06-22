@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Grid } from '@mui/material';
-import { getItemWithFilter } from '../../selectors';
+import { getItemFirebase } from '../../selectors';
 import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer = () => {
@@ -11,7 +11,7 @@ const ItemDetailContainer = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        getItemWithFilter(id)
+        getItemFirebase(id)
         .then((res) => {
             setItem(res);
         })

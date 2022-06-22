@@ -44,8 +44,8 @@ const NavBar = () => {
   const handleCloseNavMenu = () => setAnchorElNav(null);
 
   return (
-      <AppBar position="static">
-        <Container maxWidth="xl" className='nav-custom'>
+      <AppBar position="static" className='nav-custom'>
+        <Container maxWidth="xl" >
           <Toolbar disableGutters>
 
             <Link to={'/'}>

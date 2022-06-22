@@ -10,6 +10,7 @@ import Footer from './components/Footer/Footer';
 import { CartProvider }  from './context/CartContext';
 import './App.css';
 import Send from './components/pages/Send';
+import CheckoutContainer from './components/CheckoutContainer/CheckoutContainer';
 
 const theme = createTheme({
   palette: {
@@ -34,8 +35,7 @@ function App() {
           <Routes>
             <Route exact path='/' element={<ItemListContainer />}/>
             <Route exact path='/home' element={<ItemListContainer />}/>
-            {/* <Route exact path='/cart' element={<Cart />}/> */}
-            <Route exact path='/cart' element={<CheckoutTable />}/>
+            <Route exact path='/cart' element={<CheckoutContainer />}/>
             <Route exact path='/category/:categoryName' element={<ItemListContainer />}/>
             <Route exact path='/contact' element={<Contact />}/>
             {/* <Route exact path='/products' element={}/> */}
