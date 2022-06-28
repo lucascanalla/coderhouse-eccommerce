@@ -27,7 +27,7 @@ const CheckoutTableBodyRow = ({
     return (
         <TableRow key={id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
             <TableCell align="center" style={{width:'170px'}}>
-                <img src={`/${img}`} style={{width:'35%'}}/>
+                <img src={`/${img}`} alt={title} style={{width:'35%'}}/>
             </TableCell>
             <TableCell align="center">{title}</TableCell>
             <TableCell align="center">{type}</TableCell>

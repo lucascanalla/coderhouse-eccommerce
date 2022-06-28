@@ -254,7 +254,8 @@ const initialCards = [
 const statesMock = [
     'Buenos Aires',
     'Santa Fe',
-    'Catamarca'
+    'Catamarca',
+    'Cordoba'
 ];
 
 const citiesMock = [{
@@ -272,6 +273,18 @@ const citiesMock = [{
 {
     name: 'Rosario',
     state:'Santa Fe'
+},
+{
+    name: 'Cordoba',
+    state:'Cordoba'
+},
+{
+    name:'Monte Maiz',
+    state: 'Cordoba'
+},
+{
+    name:'Villa Maria',
+    state: 'Cordoba'
 },
 
 ]

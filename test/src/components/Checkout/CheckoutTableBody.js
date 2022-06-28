@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TableBody } from '@mui/material';
 import CheckoutTableBodyRow from './CheckoutTableBodyRow';
 
 const CheckoutTableBody = ({ 
         cartListItem, 
         handleDeleteButton, 
-        handleChangeQuantity, 
-        setCount,
-        count
+        handleChangeQuantity
     }) => {
 
     return (

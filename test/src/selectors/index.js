@@ -42,7 +42,6 @@ const  getItemWithFilter =  (id) => {
 
 const getProductsFirebase = async (categoryName) => {
     
-    console.log(categoryName)
     const productSnapshot = await getDocs(
                                             categoryName ?
                                                 query(collection(db, "productos"), 
@@ -53,9 +52,6 @@ const getProductsFirebase = async (categoryName) => {
     const productList = productSnapshot.docs.map( (doc) => {
         let product = doc.data();
         product.id = doc.id;
-        //{...doc.data(), id: doc.id}
-       console.log("product", product)
-       //console.log("doc", doc)
        return product;
     })
     
@@ -68,17 +64,14 @@ const getItemFirebase = async (itemId) => {
     const docSnapshot = await getDoc(docRef);
     let product = docSnapshot.data();
     product.id = docSnapshot.id;
-    console.log("product", product)
-    //console.log("doc", doc)
     return product;
-    
-
 }
 
 const saveOrderFirebase = async (order) => {
     const orderFirebase = collection(db, 'ordenes');
     const orderDoc = await addDoc(orderFirebase, order)
-    console.log(orderDoc)
+    console.log('orderDoc: ', orderDoc.id)
+    return orderDoc.id
 
 }
 export { getProducts, getProductsWithCategory, 

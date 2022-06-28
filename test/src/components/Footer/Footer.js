@@ -9,7 +9,7 @@ const Footer = () => {
             <a href='https://instagram.com/aliwen.muebles'>
                 <h2 className='p-footer'>
                     <InstagramIcon style={{marginRight: '5px'}}/>
-                    <img style={{width: '15%'}} src='/aliwenH1Png.png' />
+                    <img style={{width: '15%'}} alt='footer_photo' src='/aliwenH1Png.png' />
                 </h2>
                 <p>Estamos en Instagram</p>
                 <Button variant='outlined'>

@@ -22,7 +22,7 @@ const ItemDetailContainer = () => {
         .finally(() => {
             console.log("Finally");
         })
-    },[id])
+    },[id, navigate])
     
     return (
         <>

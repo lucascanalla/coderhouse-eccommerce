@@ -3,8 +3,9 @@ import { createContext, useState } from "react";
 const CartContext = createContext();
 
 const CartProvider = ({children}) => {
-    const [cartListItem, setCartListItem] = useState([])
-    const [total, setTotal] = useState(0)
+    const [cartListItem, setCartListItem] = 
+        useState(JSON.parse(localStorage.getItem('products')) || []);
+    const [total, setTotal] = useState(0);
     
     const addProductToCart = (product, typeChosen, quantity) => {
         const { id, title, img } = product;
@@ -21,8 +22,9 @@ const CartProvider = ({children}) => {
                                 'img': img[0]
                             }
             setCartListItem(cartListItem => [...cartListItem, itemToAdd]);
+            localStorage.setItem('products', JSON.stringify([...cartListItem, itemToAdd]));
         }else{
-            modifyQuantity(id, type, (isInCart.quantity + quantity))
+            modifyQuantity(id, type, (isInCart.quantity + quantity));
         }
     }
 
@@ -35,12 +37,16 @@ const CartProvider = ({children}) => {
             }
         })
         setCartListItem(newList);
+        localStorage.setItem('products', JSON.stringify(newList));
+
     }
 
     const removeItem = (itemId, type) => {
         let newCartListItem = cartListItem.filter(item => 
             (item.id !== itemId))
         setCartListItem(newCartListItem);
+        localStorage.setItem('products', JSON.stringify(newCartListItem));
+
     }
 
     const clear = () => {

@@ -1,47 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Divider, Grid, InputAdornment, TextField } from '@mui/material';
 import '../CheckoutContainer/Checkout.css'
 import CheckoutDeliverySelect from './CheckoutDeliverySelect';
-import validator from '../CheckoutContainer/CheckoutFormValidator';
 
 const CheckoutDelivery = ({
     handleFormChange, 
     setProvince,
     cities,
-    setCities,
-    setIsValid
-    }) => {
-        
-    const [errors, setErrors] = useState({
-        // name:'',
-        // mail:'',
-        // phone:'',
-        // code_phone:'',
-        // address:'',
-        // address_number:'',
-        // city:'',
-        // province:''
-    });
-    
-    useEffect(() => {
-        const isValidErrors = () => 
-            Object.values(errors).filter(error => typeof error !== "undefined")
-            .length > 0;
-
-        !isValidErrors() ? setIsValid(true) : setIsValid(false) 
-    }, [errors])
-
-    useEffect(() => {
-        setIsValid(false) 
-    }, [])
-
-    const handleValidateForm = (e) => {
-        const {value, name} = e.target;
-        let result = validator(value, name);
-        setErrors(() => ({
-            ...errors, [e.target.name]: Object.values(result)[0]
-        }))
-    }
+    setCities}) => {
     
     return (
         <>
@@ -52,35 +18,24 @@ const CheckoutDelivery = ({
                         name="name"
                         label="Nombre y Apellido"
                         variant="outlined"
-                        margin="normal"
                         onChange={handleFormChange}
-                        onBlur={handleValidateForm}
-                        error={errors.name ? true : false}
-                        helperText={errors.name}
+                        margin="normal"
                     />
                     <TextField
                         name="mail"
                         label="Mail"
                         variant="outlined"
-                        margin="normal"
                         onChange={handleFormChange}
-                        onBlur={handleValidateForm}
-                        error={errors.mail ? true : false}
-                        helperText={errors.mail}
+                        margin="normal"
                     />
-
                     <div style={{display: 'flex'}}>
                         <Grid item xs={4}>
                             <TextField
-                                name="code_phone"
+                                name="code-phone"
                                 label="Codigo"
                                 variant="outlined"
-                                margin="normal"
                                 onChange={handleFormChange}
-                                onBlur={handleValidateForm}
-                                error={errors.code_phone ? true : false}
-                                helperText={errors.code_phone}
-                                inputProps={{ maxLength: 2 }}
+                                margin="normal"
                                 InputProps={{
                                     startAdornment: <InputAdornment position="start">+</InputAdornment>,
                                 }}
@@ -91,11 +46,8 @@ const CheckoutDelivery = ({
                                 name="phone"
                                 label="Telefono"
                                 variant="outlined"
-                                margin="normal"
-                                onBlur={handleValidateForm}
                                 onChange={handleFormChange}
-                                error={errors.phone ? true : false}
-                                helperText={errors.phone}
+                                margin="normal"
                                 />
                         </Grid>
                     </div>
@@ -110,23 +62,17 @@ const CheckoutDelivery = ({
                                 name="address"
                                 label="Direccion"
                                 variant="outlined"
-                                margin="normal"
-                                onBlur={handleValidateForm}
                                 onChange={handleFormChange}
-                                error={errors.address ? true : false}
-                                helperText={errors.address}
+                                margin="normal"
                                 />
                         </Grid>
                         <Grid item xs={4} style={{paddingLeft: '0px'}}>
                             <TextField
-                                name="address_number"
+                                name="street-number"
                                 label="Numero"
                                 variant="outlined"
-                                margin="normal"
-                                onBlur={handleValidateForm}
                                 onChange={handleFormChange}
-                                error={errors.address_number ? true : false}
-                                helperText={errors.address_number}
+                                margin="normal"
                                 />
                         </Grid>
                     </div>
@@ -135,8 +81,6 @@ const CheckoutDelivery = ({
                         cities={cities}
                         setCities={setCities}
                         handleFormChange={handleFormChange}
-                        handleValidateForm={handleValidateForm}
-                        errors={errors}
                     />
                 </Grid>
             </Grid>

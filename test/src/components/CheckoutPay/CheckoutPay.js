@@ -1,10 +1,26 @@
+import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import React from 'react';
 
-const CheckoutPay = () => {
+const CheckoutPay = ({handleFormChange}) => {
+    
     return (
-        <div>
-            <h1>Paga la prata</h1>
-        </div>
+        <FormControl>
+            <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="transferenciaBancaria"
+                name="pay_type"
+                onChange={handleFormChange}
+            >
+                <FormControlLabel value="mercadoPago" 
+                    control={<Radio />} 
+                    label="Mercado Pago" 
+                />
+                <FormControlLabel value="transferenciaBancaria" 
+                    control={<Radio />} 
+                    label="Transferencia Bancaria" 
+                />
+            </RadioGroup>
+        </FormControl>
     );
 };
 

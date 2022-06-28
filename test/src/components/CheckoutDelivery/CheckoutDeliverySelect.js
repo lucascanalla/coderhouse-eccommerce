@@ -1,21 +1,23 @@
+import { useState } from 'react';
 import { FormControl, InputLabel, MenuItem, OutlinedInput, Select } from '@mui/material';
 import { citiesMock, statesMock } from '../../data';
 
-
 const CheckoutDeliverySelect = ({
-        setProvince,
         cities,
         setCities, 
-        handleFormChange
+        handleFormChange,
+        handleValidateForm, 
+        errors
     }) => {
 
+    const [advice, setAdvice] = useState(false)
+    
     const handleChange = (e) => {
         if(e.target.name === 'province'){
-            setCities(citiesMock.filter((city) => {
-                return (city.state === e.target.value)
-            }))
+            setCities(citiesMock.filter(city => {return (city.state === e.target.value)}))
+        }else{
+            e.target.value !== 'Cordoba' ? setAdvice(true) : setAdvice(false)
         }
-
         handleFormChange(e)
     }
 
@@ -28,6 +30,7 @@ const CheckoutDeliverySelect = ({
                 id="demo-multiple-name"
                 name='province'
                 onChange={handleChange}
+                onBlur={handleValidateForm}
                 input={<OutlinedInput label="Provincia" />}
             >
             {statesMock.map((state) => (
@@ -40,7 +43,7 @@ const CheckoutDeliverySelect = ({
             ))}
             </Select>
         </FormControl>
-
+        
         <FormControl sx={{ m: 1, width: 300 }}>
         <InputLabel id="demo-multiple-name-label">Localidad</InputLabel>
             <Select
@@ -48,6 +51,7 @@ const CheckoutDeliverySelect = ({
                 id="demo-multiple-name"
                 name='city'
                 onChange={handleChange}
+                onBlur={handleValidateForm}
                 input={<OutlinedInput label="Localidad" />}
             >
             {cities && cities.map((city) => (
@@ -58,9 +62,16 @@ const CheckoutDeliverySelect = ({
                     {city.name}
                 </MenuItem>
             ))}
-            
             </Select>
         </FormControl>
+        {
+            advice && (
+                <p style={{margin: '4px'}}>
+                    <em>Atencion! </em>
+                    Los envios por fuera de la ciudad de Cordoba quedan a cargo del comprador.
+                </p>
+            )
+        }
         </>
     );
 };

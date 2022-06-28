@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Box, Divider, Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import CartContext from '../../context/CartContext'
@@ -18,7 +18,7 @@ import './ItemDetail.css'
 const ItemDetail = ({item}) => {
 
     let initial = 1
-    const { img, title, description, category, subcategory, price, stock, niu } = item;
+    const { img, title, description, category, subcategory, price, stock } = item;
     const colors = [{
                         color:'#d3a58d',
                         name: 'Nogal'

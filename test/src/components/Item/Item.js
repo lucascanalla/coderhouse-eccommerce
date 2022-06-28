@@ -10,7 +10,7 @@ import './Card.css'
 const Item = ({item}) => {
     
     let initial = 1;
-    const {img, title, price, stock, niu, id, category} = item
+    const { img, title, price, stock, niu, id } = item
     const [count, setCount] = useState(initial)
     const [showButton, setShowButton] = useState(false);
     const { addProductToCart } = useContext(CartContext)

@@ -2,7 +2,6 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
 import ItemListContainer from './components/Item/ItemListContainer';
-import CheckoutTable from './components/Checkout/CheckoutTable';
 import Navbar from './components/NavBar/NavBar'
 import Error from './components/pages/Error';
 import Contact from './components/pages/Contact';

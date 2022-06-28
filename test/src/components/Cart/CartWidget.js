@@ -37,7 +37,7 @@ const CartWidget = () => {
                     <>
                     <Card style={{marginBottom: '15px'}} key={item.id}>                        
                         <CardContent style={{display: 'flex', alignItems: 'center'}}>
-                            <img src={`/${item.img}`} alt="photo" className='img-cart'/>
+                            <img src={`/${item.img}`} alt={item.img} className='img-cart'/>
                             <Typography sx={{ fontSize: 18 }} style={{marginRight:'10px', marginBottom:'0px'}} color="text.secondary" gutterBottom>
                                 {item.title}
                             </Typography>
