@@ -5,24 +5,27 @@ import ItemDetailModal from './ItemDetailModal';
 
 const ItemSelectPrice = ({
             priceArray, 
-            setPriceChosen, 
-            priceChosen,
-            setType
+            setType,
+            type
         }) => {
             
     const [open, setOpen] = useState(false)
     
     const handleModal = () => { setOpen(!open); }
-    const handleChangeSelect = (e) => setPriceChosen(e.target.value)
-    const handleChangeMenuItem = (e) => setType(e.target.getAttribute("data-type"))
+    const handleChangeMenuItem = (e) => {
+        setType({
+            'type': e.target.getAttribute("data-type"),
+            'price': e.target.getAttribute("data-price"),
+        })
+    } 
 
     return (
         <>
-        { priceChosen !== '' && 
+        { type.price !== '' && 
 
             <div style={{marginBottom:'10px', cursor: 'pointer'}} onClick={handleModal}>
                 <p className='price-select-custom'>
-                    ${priceChosen}
+                    ${type.price}
                 </p>
 
                 <div className='price-option-custom'>
@@ -33,8 +36,7 @@ const ItemSelectPrice = ({
         }
         <FormControl sx={{ m: 1, minWidth: 80 }}>
             <Select
-                value={priceChosen}
-                onChange={handleChangeSelect}
+                value={type.price}
                 autoWidth
                 displayEmpty
                 style={{fontFamily: 'DINNextRoundedLTPro'}}
@@ -43,16 +45,17 @@ const ItemSelectPrice = ({
                     <em style={{color:'grey'}}>Seleccione</em>
                 </MenuItem>
             {
-            priceArray && priceArray.map((price, i) => {
+            priceArray && priceArray.map((data, i) => {
                 return(
                     <MenuItem 
                         key={i} 
-                        value={price.price}
-                        data-type={price.type}
+                        value={data.price}
+                        data-type={data.type}
+                        data-price={data.price}
                         onClick={handleChangeMenuItem}
                         className="select-item-custom"
                     >
-                        {price.type}
+                        {data.type}
                     </MenuItem>
                 )}
             )
@@ -70,7 +73,7 @@ const ItemSelectPrice = ({
                             10% de Descuento! <br/>
                         </Typography>
                         <Typography variant="body2">
-                            Precio: {priceChosen * 0.9} <br/>
+                            Precio: ${type.price * 0.9} <br/>
                         </Typography>
                     </CardContent>
                 </Card>
@@ -80,8 +83,8 @@ const ItemSelectPrice = ({
                             Mercado Pago <br/>
                         </Typography>
                         <Typography variant="body2">
-                            6 cuotas sin Interes de {Math.round(priceChosen/6, 2)} <br/>
-                            3 cuotas sin Interes de {Math.round(priceChosen/3, 2)}
+                            6 cuotas sin Interes de ${Math.round(type.price/6, 2)} <br/>
+                            3 cuotas sin Interes de ${Math.round(type.price/3, 2)}
                         </Typography>
                     </CardContent>
                 </Card>

@@ -11,7 +11,7 @@
 }
 
 .nav-button-login {
-    background-color: #0f3031;
+    /* background-color: #0f3031; */
 }
 
 .img-cart{
@@ -41,4 +41,16 @@
     position: sticky !important;
     top: 0 !important;
     z-index: 100;
+    box-shadow: none !important;
+}
+
+.button-form-login {
+    display: flex;
+    justify-content: center !important;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.linear-progress {
+    display: contents !important;
+    margin-top: 10px;
 }

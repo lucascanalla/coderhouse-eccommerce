@@ -1,5 +1,5 @@
-import { Container } from '@mui/material';
 import React from 'react';
+import { Container } from '@mui/material';
 import CheckoutSteps from './CheckoutSteps';
 import './Checkout.css';
 

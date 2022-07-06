@@ -18,14 +18,13 @@ const ItemCount = ({ stock, initial, onAdd, showButton, count, setCount }) => {
         { !showButton &&
             <>
             <div>
-            <Button variant='outlined' disabled={ count === initial || stock < 1 } onClick={handleRestCount}>-</Button>
-                <span style={{fontWeight:'bold'}}>{count}</span>
-            <Button variant='outlined'  disabled={ stock < 1 || count === stock } onClick={handleAddCount}>+</Button>
-            <Button id='buttonCart' variant='contained' disabled={ stock < 1 } onClick={handleOnAdd}>
-            <span style={{color: 'white', marginBottom: '0px'}}>{ stock < 1 ? 'Sin Stock' : 'Agregar al Carrito'  }</span>
-            </Button>
+                <Button variant='outlined' disabled={ count === initial || stock < 1 } onClick={handleRestCount}>-</Button>
+                    <span style={{fontWeight:'bold'}}>{count}</span>
+                <Button variant='outlined'  disabled={ stock < 1 || count === stock } onClick={handleAddCount}>+</Button>
+                <Button id='buttonCart' variant='contained' disabled={ stock < 1 } onClick={handleOnAdd}>
+                    <span style={{color: 'white', marginBottom: '0px'}}>{ stock < 1 ? 'Sin Stock' : 'Agregar al Carrito'  }</span>
+                </Button>
             </div>
-            
             </>
         }
         { showButton && 

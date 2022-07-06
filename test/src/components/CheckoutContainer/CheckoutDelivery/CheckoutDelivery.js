@@ -1,47 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Divider, Grid, InputAdornment, TextField } from '@mui/material';
-import '../CheckoutContainer/Checkout.css'
+import '../Checkout.css'
 import CheckoutDeliverySelect from './CheckoutDeliverySelect';
-import validator from '../CheckoutContainer/CheckoutFormValidator';
 
 const CheckoutDelivery = ({
-    handleFormChange, 
+    handleFormChange,
+    formValues,
     setProvince,
     cities,
     setCities,
-    setIsValid
+    setIsValid,
+    errors
     }) => {
         
-    const [errors, setErrors] = useState({
-        // name:'',
-        // mail:'',
-        // phone:'',
-        // code_phone:'',
-        // address:'',
-        // address_number:'',
-        // city:'',
-        // province:''
-    });
-    
     useEffect(() => {
-        const isValidErrors = () => 
-            Object.values(errors).filter(error => typeof error !== "undefined")
-            .length > 0;
-
         !isValidErrors() ? setIsValid(true) : setIsValid(false) 
     }, [errors])
 
     useEffect(() => {
-        setIsValid(false) 
+        !isValidErrors() ? setIsValid(true) : setIsValid(false) 
     }, [])
 
-    const handleValidateForm = (e) => {
-        const {value, name} = e.target;
-        let result = validator(value, name);
-        setErrors(() => ({
-            ...errors, [e.target.name]: Object.values(result)[0]
-        }))
-    }
+    const isValidErrors = () => Object.values(errors).filter(error => typeof error !== "undefined").length > 0;
     
     return (
         <>
@@ -54,19 +34,28 @@ const CheckoutDelivery = ({
                         variant="outlined"
                         margin="normal"
                         onChange={handleFormChange}
-                        onBlur={handleValidateForm}
                         error={errors.name ? true : false}
                         helperText={errors.name}
+                        value={formValues.name}
                     />
                     <TextField
-                        name="mail"
-                        label="Mail"
+                        name="email"
+                        label="Email"
                         variant="outlined"
                         margin="normal"
                         onChange={handleFormChange}
-                        onBlur={handleValidateForm}
-                        error={errors.mail ? true : false}
-                        helperText={errors.mail}
+                        error={errors.email ? true : false}
+                        helperText={errors.email}
+                        value={formValues.email}
+                    />
+                    <TextField
+                        name="repeat_email"
+                        label="Repetir Email"
+                        variant="outlined"
+                        margin="normal"
+                        onChange={handleFormChange}
+                        error={errors.repeat_email ? true : false}
+                        helperText={errors.repeat_email}
                     />
 
                     <div style={{display: 'flex'}}>
@@ -77,9 +66,9 @@ const CheckoutDelivery = ({
                                 variant="outlined"
                                 margin="normal"
                                 onChange={handleFormChange}
-                                onBlur={handleValidateForm}
                                 error={errors.code_phone ? true : false}
                                 helperText={errors.code_phone}
+                                value={formValues.code_phone}
                                 inputProps={{ maxLength: 2 }}
                                 InputProps={{
                                     startAdornment: <InputAdornment position="start">+</InputAdornment>,
@@ -92,11 +81,11 @@ const CheckoutDelivery = ({
                                 label="Telefono"
                                 variant="outlined"
                                 margin="normal"
-                                onBlur={handleValidateForm}
                                 onChange={handleFormChange}
                                 error={errors.phone ? true : false}
                                 helperText={errors.phone}
-                                />
+                                value={formValues.phone}
+                            />
                         </Grid>
                     </div>
                 </Grid>
@@ -111,10 +100,10 @@ const CheckoutDelivery = ({
                                 label="Direccion"
                                 variant="outlined"
                                 margin="normal"
-                                onBlur={handleValidateForm}
                                 onChange={handleFormChange}
                                 error={errors.address ? true : false}
                                 helperText={errors.address}
+                                value={formValues.address}
                                 />
                         </Grid>
                         <Grid item xs={4} style={{paddingLeft: '0px'}}>
@@ -123,20 +112,55 @@ const CheckoutDelivery = ({
                                 label="Numero"
                                 variant="outlined"
                                 margin="normal"
-                                onBlur={handleValidateForm}
                                 onChange={handleFormChange}
                                 error={errors.address_number ? true : false}
                                 helperText={errors.address_number}
+                                value={formValues.address_number}
                                 />
                         </Grid>
                     </div>
+                    <div style={{display: 'flex', textAlign: 'left', paddingLeft: '10px'}}>
+                        <Grid item xs={4}>
+                            <TextField
+                                name="floor"
+                                label="Piso"
+                                variant="outlined"
+                                margin="normal"
+                                onChange={handleFormChange}
+                                value={formValues.floor}
+                            />
+                        </Grid>
+                        <Grid item xs={4} style={{paddingLeft: '0px'}}>
+                            <TextField
+                                name="apartment"
+                                label="Depto"
+                                variant="outlined"
+                                margin="normal"
+                                onChange={handleFormChange}
+                                value={formValues.apartment}
+                            />
+                        </Grid>
+                        <Grid item xs={4} style={{paddingLeft: '0px'}}>
+                        <TextField
+                                name="zip_code"
+                                label="CP"
+                                variant="outlined"
+                                margin="normal"
+                                onChange={handleFormChange}
+                                error={errors.zip_code ? true : false}
+                                helperText={errors.zip_code}
+                                value={formValues.zip_code}
+                            />
+                        </Grid>
+                    </div>
+                    
                     <CheckoutDeliverySelect 
                         setProvince={setProvince}
                         cities={cities}
                         setCities={setCities}
                         handleFormChange={handleFormChange}
-                        handleValidateForm={handleValidateForm}
                         errors={errors}
+                        formValues={formValues}
                     />
                 </Grid>
             </Grid>

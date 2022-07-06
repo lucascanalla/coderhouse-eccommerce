@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Grid } from '@mui/material';
-import { getProductsFirebase } from '../../selectors';
+import { getProductsFirebase } from '../../selectors/items';
 import ItemList from './ItemList';
 import './Card.css';
 

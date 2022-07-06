@@ -16,7 +16,7 @@
   pointer-events: none;
 }
 
-h1, h2, h3, h4, p, span, a, button, th, td, ul, li, div {
+h1, h2, h3, h4, p, span, a, button, th, td, ul, li, div, label {
     font-family: "DINNextRoundedLTPro" !important;
     /* font-family: 'Work Sans', sans-serif !important; */
     color: var(--principalColor) ;

@@ -19,6 +19,10 @@ const CheckoutPay = ({handleFormChange}) => {
                     control={<Radio />} 
                     label="Transferencia Bancaria" 
                 />
+                <FormControlLabel value="efectivo" 
+                    control={<Radio />} 
+                    label="Efectivo" 
+                />
             </RadioGroup>
         </FormControl>
     );

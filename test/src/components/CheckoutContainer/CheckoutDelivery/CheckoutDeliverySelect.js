@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { FormControl, InputLabel, MenuItem, OutlinedInput, Select } from '@mui/material';
-import { citiesMock, statesMock } from '../../data';
+import { citiesMock, statesMock } from '../../../data';
 
 const CheckoutDeliverySelect = ({
         cities,
         setCities, 
         handleFormChange,
-        handleValidateForm, 
-        errors
+        formValues
     }) => {
 
     const [advice, setAdvice] = useState(false)
@@ -30,7 +29,7 @@ const CheckoutDeliverySelect = ({
                 id="demo-multiple-name"
                 name='province'
                 onChange={handleChange}
-                onBlur={handleValidateForm}
+                value={formValues.province}
                 input={<OutlinedInput label="Provincia" />}
             >
             {statesMock.map((state) => (
@@ -51,7 +50,7 @@ const CheckoutDeliverySelect = ({
                 id="demo-multiple-name"
                 name='city'
                 onChange={handleChange}
-                onBlur={handleValidateForm}
+                value={formValues.city}
                 input={<OutlinedInput label="Localidad" />}
             >
             {cities && cities.map((city) => (

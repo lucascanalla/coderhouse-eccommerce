@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Grid } from '@mui/material';
-import { getItemFirebase } from '../../selectors';
+import { getItemFirebase } from '../../selectors/items';
 import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer = () => {
@@ -18,9 +18,6 @@ const ItemDetailContainer = () => {
         .catch((err) => {
             console.log("Error: ",err);
             navigate('/notfound');
-        })
-        .finally(() => {
-            console.log("Finally");
         })
     },[id, navigate])
     

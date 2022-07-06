@@ -1,8 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Box, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import CartContext from '../../context/CartContext'
+import { getColorsFirebase } from '../../selectors/items';
 
 import ItemDetailSmallImages from './ItemDetailSmallImages';
 import ItemDetailImage from './ItemDetailImage';
@@ -19,32 +20,30 @@ const ItemDetail = ({item}) => {
 
     let initial = 1
     const { img, title, description, category, subcategory, price, stock } = item;
-    const colors = [{
-                        color:'#d3a58d',
-                        name: 'Nogal'
-                    },
-                    {
-                        color:'#c99881',
-                        name: 'Cedro'
-                    },
-                    {
-                        color:'#bb825e',
-                        name: 'Roble'
-                    },
-                    {
-                        color:'#c37321',
-                        name: 'Algarrobo'
-                    }]
+
     const [showButton, setShowButton] = useState(false);
-    const [priceChosen, setPriceChosen ] = useState('')
-    const [type, setType ] = useState('Seleccione')
+    const [type, setType ] = useState({
+        type: '',
+        price: ''
+    })
     const [count, setCount] = useState(initial)
+    const [colors, setColors] = useState();
+
+    useEffect(() => {
+        const colorsToShow = getColorsFirebase();
+        colorsToShow
+        .then((res) => {
+            setColors(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }, [])
 
     const { addProductToCart } = useContext(CartContext);
 
     const onAdd = () => { 
-        let typeChosen = {'type': type, 'price': priceChosen}
-        addProductToCart(item, typeChosen, count);
+        addProductToCart(item, type, count);
         setShowButton(true);
     }
 
@@ -66,10 +65,16 @@ const ItemDetail = ({item}) => {
     return(
         <>
         <Grid item xs={2}>
-            <ItemDetailSmallImages Item={Item} img={img}/>
+            <ItemDetailSmallImages 
+                Item={Item} 
+                img={img}
+            />
         </Grid>
         <Grid item xs={6}>
-            <ItemDetailImage Item={Item} img={img}/>
+            <ItemDetailImage 
+                Item={Item} 
+                img={img}
+            />
         </Grid>
         <Grid item xs={4}>
             <Item className='item-detail-custom'>
@@ -79,21 +84,27 @@ const ItemDetail = ({item}) => {
                     title={title}
                 />
                 <Box sx={boxValue}>
-                    <ItemDetailTitle title={title} />
+                    <ItemDetailTitle 
+                        title={title} 
+                    />
                     <ItemSelectPrice 
                         priceArray={price} 
-                        priceChosen={priceChosen} 
-                        setPriceChosen={setPriceChosen} 
+                        //priceChosen={priceChosen} 
+                        //setPriceChosen={setPriceChosen} 
                         type={type}
                         setType={setType}
                     />
-                    <ItemDetailColors colors={colors} />
+                    <ItemDetailColors 
+                        colors={colors} 
+                    />
                 </Box>
                 <Box sx={boxValue}>
-                    <ItemDetailDescription description={description} />
+                    <ItemDetailDescription 
+                        description={description} 
+                    />
                 </Box>
                 {
-                    priceChosen &&
+                    type.price &&
                     <div className='detail-button'>
                         <ItemCount 
                             stock={stock} 
@@ -102,7 +113,7 @@ const ItemDetail = ({item}) => {
                             showButton={showButton}
                             count={count}
                             setCount={setCount}
-                            />
+                        />
                     </div>
                 }
             </Item>

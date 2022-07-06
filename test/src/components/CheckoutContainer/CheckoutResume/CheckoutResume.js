@@ -4,7 +4,7 @@ const CheckoutResume = ({orderId}) => {
     return (
         <div>
             <p>
-                La Order {orderId} ha sido generada
+                La Orden {orderId} ha sido generada
             </p>
         </div>
     );

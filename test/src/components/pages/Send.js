@@ -5,7 +5,7 @@ const Send = () => {
     return (
         <Container className='send-container'>
             <p>
-                Envios sin cargo en el area metropolitana de Cordoba!
+                Envios sin cargo en el anillo de circunvalacion de Cordoba!
             </p>
         </Container>
     );

@@ -31,7 +31,9 @@ const Item = ({item}) => {
                         img={img}
                         niu={niu}
                     /> 
-                    <ItemCardBody id={id} />
+                    <ItemCardBody 
+                        id={id} 
+                    />
                     <ItemCount 
                         stock={stock} 
                         initial={initial} 

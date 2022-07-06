@@ -2,7 +2,6 @@ import React from 'react';
 import { Grid } from '@mui/material';
 import Item from './Item';
 
-
 const ItemList = ({item}) => {
     return (
         <>
